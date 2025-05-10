@@ -1,0 +1,82 @@
+
+       
+
+<header class="header d-flex align-items-center py-2">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Logo -->
+      <div class="col-4 col-lg-2 text-left">
+        <img src="assets/images/logo2.png" alt="Logo" style="max-height: 50px;">
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="col-lg-8 d-none d-lg-block">
+        <ul class="nav justify-content-center">
+          <li class="nav-item"><a class="nav-link text-black" routerLink="/home">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-black" routerLink="/category-page">Categories</a></li>
+      
+      
+          <li class="nav-item"><a class="nav-link text-black" routerLink="/aboutus">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-black" routerLink="/contactus">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Icons + Dropdown -->
+      <div class="col-8 col-lg-2 d-flex justify-content-end align-items-center ">
+       
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control "
+            [(ngModel)]="searchKeyword"
+            (keyup.enter)="onSearch()"
+     
+          />
+          <button
+            class="btn btn-pink rounded"
+            type="button"
+            (click)="onSearch()"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+        
+
+        <a routerLink="/wishlist" class="mx-2" [appRole]="'Customer'">
+          <i class="fas fa-heart span"></i>
+        </a>
+
+        
+        <a routerLink="/cart" class="mx-2" [appRole]="'Customer'">
+          <i class="fas fa-shopping-bag span"  ></i>
+        </a>
+          <div class="d-lg-none">
+          <button class="btn btn-secondary  m-2" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+            <i class="fa-solid fa-bars span"></i>
+          </button>
+    
+          <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileSidebar">
+            <div class="offcanvas-header">
+         
+              <button type="button" class="btn-close btn-close-white span" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+              <a routerLink="/home" class="nav-link text-white mb-2"><i class="fa-solid fa-house me-2 span"></i> Home</a>
+    
+              <button class="btn text-start w-100 text-white mb-2" data-bs-toggle="collapse" data-bs-target="#configMenuMobile" style="background: none;">
+                <i class="fa-solid fa-layer-group me-2 span"></i> Categories ▾
+              </button>
+              <div class="collapse ps-3" id="configMenuMobile">
+                <ul style="list-style: none;" >
+                <li *ngFor="let item of categories"><a [routerLink]="['/product-card/product',item.name]" class="nav-link text-white mb-1">{{item.name}}</a></li> 
+            
+              </ul>
+              </div>
+    
+              <a routerLink="/aboutus" class="nav-link text-white mb-2">  <i class="fas fa-info-circle me-2 span"></i> About Us</a>
+              <a routerLink="/contactus" class="nav-link text-white mb-2">  <i class="fas fa-envelope me-2 span"></i> Contact us</a>
+              <a routerLink="/brand-page" class="nav-link text-white mb-2 ">  <i class="fa-solid fa-tags me-2 span"></i> Brands</a>
+           
+            </div>
+          </div>
+        </div>

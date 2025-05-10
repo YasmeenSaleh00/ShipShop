@@ -1,0 +1,60 @@
+<div class="card shadow-sm mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+      <strong class="fs-5">👥 Customers List</strong>
+    </div>
+  
+    <div class="card-body">
+      <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+        <table class="table table-hover table-bordered align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Number
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortById('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortById('desc')"></i>
+              </th>
+              <th>First Name
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByName('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByName('desc')"></i>
+              </th>
+              <th>Last Name</th>
+              <th>Email
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByEmail('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByEmail('desc')"></i>
+              </th>
+              <th>Created On
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByCreationDate('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
+              </th>
+              <th>Customer status</th>
+              <th>Is Active</th>
+              <th  [appRole]="'Edit'">Actions</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let customer of customer">
+              <td>{{customer.id}}</td>
+              <td>{{customer.firstName}}</td>
+              <td>{{customer.lastName}}</td>
+              <td>{{customer.email}}</td>
+              <td>{{customer.createOn}}</td>
+              <td>{{customer.customerStatus}}</td>
+              <td><span>{{customer.isActive}}</span></td>
+              <td  [appRole]="'Edit'">
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-outline-primary" (click)="activeCustomer(customer.id)">
+                    <i class="fas fa-check-circle me-2"></i>Activate
+                  </button>
+                  <button class="btn btn-sm btn-outline-danger" (click)="banCustomer(customer.id)">
+                    <i class="fas fa-ban me-2"></i>Ban
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+  
+        </table>
+      </div>
+    </div>
+  </div>
+  

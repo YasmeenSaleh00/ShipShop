@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    .button{
+        margin-bottom: 20px;
+    }
+}
+.span{
+    color:  rgb(252, 148, 183);
+}
+
+a:hover{
+    color: rgb(252, 148, 183) !important;
+}

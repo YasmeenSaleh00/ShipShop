@@ -1,0 +1,84 @@
+
+<div id="page-content">        
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a routerLink="/home" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Product Details</span>  </div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <div class="container">
+        <div class="product-detail-container product-single-style1">
+            <div class="product-single">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="product-details-img product-horizontal-style">
+                                <div class="zoompro-wrap product-zoom-right pl-20">
+                                    <div class="zoompro-span">
+                                        <img id="zoompro" class="zoompro prlightbox"   [src]="'https://localhost:7057/Images/'+products?.imageUrl" style="width: 600px; height: 400px;" alt="" />
+                                    </div>
+                                </div>   
+                            </div>
+                        </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="product-single__meta">
+                            <h1 class="product-single__title">{{products?.name}}</h1>
+                            <div class="prInfoRow">                              
+                                <div class="product-stock"> <span class="instock ">{{products?.productStatus}}</span> </div>
+                            </div>
+                            <p class="product-single__price product-single__price-product-template">
+                         
+                                
+                                <span class="product-price__price product-price__price-product-template product-price__sale product-price__sale--single">
+                                    <span id="ProductPrice-product-template"><span class="money">{{products?.price | currency }}</span></span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="product-single__description rte">
+                            <h5>Description:</h5>
+                            {{products?.description}}
+                        </div>
+                    
+                        <form method="post" action="#" class="product-form product-form-product-template hidedropdown">
+                            <!-- Product Action -->
+                            <div class="product-action clearfix">
+                                <div class="product-form__item--quantity">
+                                    <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <input 
+                                            type="number" 
+                                            [(ngModel)]="quantity" 
+                                            name="quantity" 
+                                            min="1" 
+                                            class="product-form__input qty" 
+                                            style="width: 100px; height: 40px;"
+                                          >                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="product-form__item--submit">
+                                    <button type="button" name="add" class="btn product-form__cart-submit" (click)="addToCart(products!.id,quantity)">
+                                        <span>Add to cart</span>
+                                    </button>
+                                </div>
+                                <p class="infolinks">
+                                    <a class="wishlist add-to-wishlist" title="Add to Wishlist"><i class="fas fa-heart me-2"></i> <span (click)="addToWishList(products!.id)" style="cursor: pointer;">Add to Wishlist</span></a>
+                                </p>
+                            </div>
+                            <!-- End Product Action -->
+                        </form>
+                        
+                        
+                        <div class="type-product">
+                            <span>Brand: </span> <a >{{products?.brandName}}</a>
+                        </div>
+                        <div class="category-products-list">
+                            <span>Category: </span>  <a >{{products?.categoryName}}</a>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+          
+</div><!--End Page Wrapper-->

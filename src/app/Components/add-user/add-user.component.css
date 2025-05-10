@@ -1,0 +1,33 @@
+.btn-success {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    color: #d65f87 ;
+    border: 2px solid #d65f87 ;
+    transition: color 0.4s ease;
+    z-index: 1;
+  }
+  
+  .btn-success::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #d65f87 ;
+    z-index: -1;
+    transition: width 0.4s ease;
+  }
+  
+  .btn-success:hover::before {
+    width: 100%;
+  }
+  
+  .btn-success:hover {
+    color: white;
+  }
+.bg-primary{
+    background-image: linear-gradient(to top, rgb(252, 148, 183), rgb(255, 210, 230));
+  
+}

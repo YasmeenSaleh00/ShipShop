@@ -1,0 +1,58 @@
+
+.footer-top {
+  background-image: linear-gradient(to top, rgb(252, 148, 183), rgb(255, 210, 230));
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.newsletter__submit {
+  background: linear-gradient(to right, #d65f87 0%, #d65f87 100%);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background-size 0.4s ease, color 0.4s ease;
+}
+
+.newsletter__submit:hover {
+  background-size: 100% 100%;
+  color: white;
+}
+
+@media (max-width: 991px) {
+  .footer-links ul {
+    display: none;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .footer-links ul.dropdown-visible {
+    display: block;
+  }
+
+  .footer-links .toggle-title {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .footer-links .toggle-title i {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer-links ul {
+    display: block !important;
+  }
+
+  .footer-links .toggle-title i {
+    display: none;
+  }
+}

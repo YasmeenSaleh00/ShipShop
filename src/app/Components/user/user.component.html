@@ -1,0 +1,70 @@
+<div class="card shadow-sm mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+    <strong class="fs-5">👤 Users List</strong>
+    <button class="btn btn-success btn-sm" routerLink="/user/add" [appRole]="'Add'"  >➕ Add User</button>
+  </div>
+
+      <div class="card-body">
+        <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+          <table class="table table-hover table-bordered align-middle text-center">
+            <thead class="table-dark">
+              <tr>
+                <th>Number
+                  <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortById('asc')"></i>
+                  <i class="fas fa-sort-down text-danger" (click)="sortById('desc')"></i>
+                </th>
+                <th>First Name
+                  <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByName('asc')"></i>
+                  <i class="fas fa-sort-down text-danger" (click)="sortByName('desc')"></i>
+                </th>
+                <th>last Name</th>
+                <th>Email
+                  <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByEmail('asc')"></i>
+                  <i class="fas fa-sort-down text-danger" (click)="sortByEmail('desc')"></i>
+                </th>
+                <th>Role Name
+              
+                </th>
+                <th>Created On
+                  <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByCreationDate('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
+                </th>
+                <th>Is Active</th>
+                <th [appRole]="'Edit'">Edit</th>
+                <th  [appRole]="'Delete'">Delete</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{ user.email }}</td>
+                <td >{{user.roleName}}</td>
+                <td>{{ user.createdOn }}</td>
+                <td>{{ user.isActive }}</td>
+                <td [appRole]="'Edit'">
+                  <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-sm btn-outline-primary" [routerLink]="['/user/edit', user.id]"  >
+                      ✏️ Edit Password
+                    </button>
+                   
+                  </div>
+                </td>
+                <td [appRole]="'Delete'"> <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)" >
+                  🗑️ Delete
+                </button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+      
+  
+      
+      </div>
+    </div>
+  
+  
+   

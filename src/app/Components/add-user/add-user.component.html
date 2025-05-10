@@ -1,0 +1,67 @@
+
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="card shadow-lg">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0 text-center">Add New User</h4>
+          </div>
+          <div class="card-body">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+               
+              <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName"
+                    placeholder="Enter first name" [(ngModel)]="user.firstName" required>
+                  <div *ngIf="userForm.submitted && !user.firstName" class="text-danger small mt-1">First name is required</div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" name="lastName"
+                    placeholder="Enter last name" [(ngModel)]="user.lastName" required>
+                  <div *ngIf="userForm.submitted && !user.lastName" class="text-danger small mt-1">Last name is required</div>
+                </div>
+                <div class="col-12">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" name="email"
+                    placeholder="Enter email" [(ngModel)]="user.email" required>
+                  <div *ngIf="userForm.submitted && !user.email" class="text-danger small mt-1">Email is required</div>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="roleName" class="form-label">Role</label>
+                <select class="form-select" id="roleName" name="roleName" [(ngModel)]="user.roleId" required>
+                  <option *ngFor="let option of role" [value]="option.id">{{option.name}}</option>
+                </select>
+                <div *ngIf="userForm.submitted && !user.roleId" class="text-danger">Role is required</div>
+              </div>
+  
+              <div *ngIf="passwordError" class="alert alert-danger">
+                <strong>Error!</strong> Passwords do not match.
+              </div>
+  
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" [(ngModel)]="user.password" required>
+                  <div *ngIf="userForm.submitted && !user.password" class="text-danger">Password is required</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" [(ngModel)]="user.confirmPassword" required>
+                  <div *ngIf="userForm.submitted && !user.confirmPassword" class="text-danger">Confirm password is required</div>
+                </div>
+              </div>
+  
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-lg">Add User</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

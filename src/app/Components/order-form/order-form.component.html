@@ -1,0 +1,62 @@
+<div id="page-content">        
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a routerLink="/home" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Checkout</span></div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <!--Page Title with Image-->
+    <div class="page-title"><h1><span class="span">C</span>heck<span class="span">O</span>ut </h1></div>
+    <!--End Page Title with Image-->
+    <div class="container">
+        <!--Main Content-->
+     
+          
+            <form  class="contact-form" #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card card--grey">
+                            <div class="card-body">
+                                <h2>SHIPPING ADDRESS</h2>
+                                <p><a routerLink="/login">Login</a> or <a routerLink="/singup">Register</a> for faster payment.</p>
+                                <div class="row mt-2">
+                                    <div class="col-sm-6"><label class="text-uppercase">Full Name:</label>
+                                        <div class="form-group"><input type="text" class="form-control" name="customerName" [(ngModel)]="order.customerName"></div>
+                                        <div *ngIf="orderForm.submitted && !order.customerName" class="text-danger small mt-1">Name is required</div>
+
+                                    </div>
+                                    <div class="col-sm-6"><label class="text-uppercase">Phone:</label>
+                                        <div class="form-group"><input type="text" name="phpne" class="form-control" [(ngModel)]="order.phone"></div>
+                                        <div *ngIf="orderForm.submitted && !order.phone" class="text-danger small mt-1">Phone is required</div>
+
+                                    </div>
+                                </div>
+                             <label class="text-uppercase">Address :</label>
+                                <div class="form-group"><input type="text" class="form-control" name="shippingAddress" [(ngModel)]="order.shippingAddress"></div>
+                                <div *ngIf="orderForm.submitted && !order.shippingAddress" class="text-danger small mt-1">Address is required</div>
+
+                            </div>
+                        </div>
+                     
+                    </div>
+                 
+                        <div class="mt-2"></div>
+                        <div class="card card--grey">
+                            <div class="card-body">
+                                <h2>Order Comment</h2><label class="text-uppercase">Write a comment here:</label> <textarea class="form-control textarea--height-200" name="note" [(ngModel)]="order.note"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                     
+                        <div class="mt-2"></div>
+                        <div class="clearfix"><button type="submit" name="submit" class="btn btn-large btn--lg w-100">Place Order</button></div>
+                  
+             
+            </form>
+        <!--End Main Content-->        
+    </div><!--End Body Container-->
+    
+</div><!--End Page Wrapper-->

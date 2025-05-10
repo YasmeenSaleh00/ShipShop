@@ -1,0 +1,8 @@
+.border-primary {
+    --bs-border-opacity: 1;
+    border-color: rgb(252, 148, 183) !important;
+  }
+
+  .span{
+    color:  rgb(217, 44, 102);
+}

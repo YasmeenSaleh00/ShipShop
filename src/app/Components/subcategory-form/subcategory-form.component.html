@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h2>{{ isEdit ? 'Update Category' : 'Add New Category' }}</h2>
+    <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="category.name" required />
+            <div *ngIf="categoryForm.submitted && !category.name" class="text-danger">Name is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="nameAr" class="form-label">Name Ar</label>
+            <input type="text" class="form-control" id="nameAr" name="nameAr" [(ngModel)]="category.nameAr" required >
+            <div *ngIf="categoryForm.submitted && !category.nameAr" class="text-danger">Name is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Main Category</label>
+            <select type="text"class="form-select" id="category" name="category" [(ngModel)]="category.categoryId" required >
+                <option *ngFor="let option of mainCategory" [value]="option.id">{{option.name}}</option>
+
+            </select>
+            <div *ngIf="categoryForm.submitted && !category.categoryId" class="text-danger">Category is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="category.description"
+                required></textarea>
+            <div *ngIf="categoryForm.submitted && !category.description" class="text-danger">Description is required</div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="description" class="form-label">Description Ar</label>
+            <textarea class="form-control" id="descriptionAr" name="descriptionAr" [(ngModel)]="category.descriptionAr"
+                required></textarea>
+            <div *ngIf="categoryForm.submitted && !category.descriptionAr" class="text-danger">Description is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="image">Image</label>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" id="image">
+            <div *ngIf="categoryForm.submitted && !category.imageUrl" class="text-danger">Image is required</div>
+
+          </div>
+        <button type="submit" class="btn btn-primary" >
+            {{ isEdit ? 'Update' : 'Add' }}
+        </button>
+    </form>
+</div>
+  

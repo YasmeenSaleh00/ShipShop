@@ -1,0 +1,128 @@
+<div id="page-content">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs-wrapper">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a routerLink="/home" title="Back to the home page">Home</a>
+          <span aria-hidden="true">|</span> <span>Dashboard</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Cards Section -->
+    <div class="container mt-4">
+      <div class="row g-3"> <!-- g-3 adds spacing between cards -->
+        <!-- Card 1 -->
+             <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-dark h-100">
+              <div class="card-header">📂 Count Of Category</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Total number of Category currently Added in the system.</p>
+                <h5 class="card-title">{{ countOfCategory }}</h5>
+              </div>
+              <div class="card-footer bg-transparent border-dark">
+                <a routerLink="/category" class="btn btn-outline-primary">Go To Category</a>
+              </div>
+            </div>
+          </div>
+                <!-- Card 2 -->
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-dark h-100">
+              <div class="card-header">📂 Count Of SubCategory</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Total number of SubCategory currently Added in the system.</p>
+                <h5 class="card-title">{{ countOfSubCategory }}</h5>
+              </div>
+              <div class="card-footer bg-transparent border-dark">
+                <a routerLink="/subcategory" class="btn btn-outline-primary">Go To SubCategory</a>
+              </div>
+            </div>
+          </div>
+         <!-- Card 3-->
+         <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-dark h-100">
+              <div class="card-header">🏷️ Count Of Brand</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Total number of Brands currently Added in the system.</p>
+                <h5 class="card-title">{{ countOfBrands }}</h5>
+              </div>
+              <div class="card-footer bg-transparent border-dark">
+                <a routerLink="/brand" class="btn btn-outline-primary">Go To Brands</a>
+              </div>
+            </div>
+          </div>
+           <!-- Card 4-->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark h-100">
+            <div class="card-header">🛍️ Count Of Products</div>
+            <div class="card-body text-dark">
+              <p class="card-text">Total number of products registered in the system so far.</p>
+              <h5 class="card-title">{{ countOfProducts }}</h5>
+            </div>
+            <div class="card-footer bg-transparent border-dark">
+              <a routerLink="/product-card" class="btn btn-outline-primary">Go To Products</a>
+            </div>
+          </div>
+        </div>
+  
+  <!-- Card 5-->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark h-100">
+            <div class="card-header">👤 Count Of Users</div>
+            <div class="card-body text-dark">
+              <p class="card-text">Total number of users currently registered in the system.</p>
+              <h5 class="card-title">{{ countOfUsers }}</h5>
+            </div>
+            <div class="card-footer bg-transparent border-dark">
+              <a routerLink="/user" class="btn btn-outline-primary">Go To Users</a>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Card 6 -->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div class="card border-dark h-100">
+            <div class="card-header">📦 Count Of Orders</div>
+            <div class="card-body text-dark">
+              <p class="card-text">Total number of orders processed in the system.</p>
+              <h5 class="card-title">{{ countOfOrders }}</h5>
+            </div>
+            <div class="card-footer bg-transparent border-dark">
+              <a routerLink="/order-table" class="btn btn-outline-primary">Go To Orders</a>
+            </div>
+          </div>
+        </div>
+          <!-- Card 7 -->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-dark h-100">
+              <div class="card-header">👥 Count Of Customers</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Total number of customers currently registered in the system.</p>
+                <h5 class="card-title">{{ countOfCustomers }}</h5>
+              </div>
+              <div class="card-footer bg-transparent border-dark">
+                <a routerLink="/customer" class="btn btn-outline-primary">Go To Customers</a>
+              </div>
+            </div>
+          </div>
+           <!-- Card 7 -->
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card border-dark h-100">
+              <div class="card-header">⚠️ Count Of Negtive FeedBack</div>
+              <div class="card-body text-dark">
+                <p class="card-text">Total number of Negtive FeedBack in the system.</p>
+                <h5 class="card-title">{{ countOfNegativeFeedBack }}</h5>
+              </div>
+              <div class="card-footer bg-transparent border-dark">
+                <a routerLink="/testimonial-table" class="btn btn-outline-primary">Go To FeedBack</a>
+              </div>
+            </div>
+          </div>
+   
+   
+          
+      
+      </div>
+    </div>
+  </div>
+  

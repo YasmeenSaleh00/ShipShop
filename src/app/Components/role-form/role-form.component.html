@@ -1,0 +1,38 @@
+ <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <h2 class="text-center mb-4">
+              {{ isEdit ? 'Update Role' : 'Add New Role' }}
+            </h2>
+            <form #roleForm="ngForm" (ngSubmit)="onSubmit(roleForm)">
+              <div class="mb-3">
+                <label for="name" class="form-label fw-semibold">Name</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg rounded-3"
+                  id="name"
+                  name="name"
+                  [(ngModel)]="role.name"
+                  required
+                />
+                <div
+                  *ngIf="roleForm.submitted && !role.name"
+                  class="text-danger mt-1"
+                >
+                  Name is required
+                </div>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg rounded-3">
+                  {{ isEdit ? 'Update' : 'Add' }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

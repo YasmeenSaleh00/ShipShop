@@ -1,0 +1,71 @@
+<div class="card shadow-sm mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+    <strong class="fs-5">🏷️ Brands List</strong>
+    <button class="btn btn-success btn-sm" routerLink="/brands/add" [appRole]="'Add'" >➕ Add Brand</button>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive"style="max-height: 500px; overflow-y: auto;">
+      <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Number
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortById('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortById('desc')"></i>
+            </th>
+            <th>Name (EN)
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByName('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortByName('desc')"></i>
+            </th>
+            <th>Name (AR)</th>
+            <th>Image</th>
+            <th>Created On
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByCreationDate('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
+            </th>
+            <th>Status</th>
+            <th [appRole]="'Edit'">Edit</th>
+            <th [appRole]="'Delete'">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let brand of brands; let i = index">
+            <td>{{brand.id}}</td>
+            <td class="fw-bold">{{ brand.name }}</td>
+            <td>{{ brand.nameAr }}</td>
+            <td>
+              <img 
+                [src]="brand.imagePath" 
+                [alt]="brand.name" 
+                width="60" 
+                height="60" 
+                class="rounded shadow-sm border"
+                style="object-fit: contain;"
+              />
+            </td>
+            <td>{{ brand.createdOn  }}</td>
+            <td>
+              <span class="badge" [ngClass]="brand.isActive ? 'bg-success' : 'bg-secondary'">
+                {{ brand.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
+            <td [appRole]="'Edit'">
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary" [routerLink]="['/brands/edit', brand.id]">
+                  ✏️ Edit
+                </button>
+               
+              </div>
+            </td>
+            <td [appRole]="'Delete'"> <button class="btn btn-sm btn-outline-danger" (click)="deleteBrand(brand.id)">
+              🗑️ Delete
+            </button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h2>{{ isEdit ? 'Update Brand' : 'Add New Brand' }}</h2>
+    <form #brandForm="ngForm" (ngSubmit)="onSubmit(brandForm)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="brand.name" required />
+            <div *ngIf="brandForm.submitted && !brand.name" class="text-danger">Name is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="nameAr" class="form-label">Name (AR)</label>
+            <input type="text" class="form-control" id="nameAr" name="nameAr" [(ngModel)]="brand.nameAr" required />
+            <div *ngIf="brandForm.submitted && !brand.nameAr" class="text-danger">Name (AR) is required</div>
+        </div>
+
+      
+        <div *ngIf="brand.imagePath" class="mb-3">
+            <label for="image" class="form-label">Current Image</label>
+            <img [src]=" brand.imagePath" alt="Current Image" width="100" height="100" class="img-thumbnail">
+        </div>
+
+     
+        <div class="mb-3">
+            <label for="imageUpload" class="form-label">Upload Image</label>
+            <input type="file" id="imageUpload" class="form-control" accept="image/*" (change)="onFileSelected($event)">
+            <div *ngIf="brandForm.submitted && !file && !brand.imagePath" class="text-danger">Image is required</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            {{ isEdit ? 'Update' : 'Add' }}
+        </button>
+    </form>
+</div>

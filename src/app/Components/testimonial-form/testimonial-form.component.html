@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="page-title"><h1 class="mt-4"><span class="span">A</span>dd <span class="span">T</span>estimonial </h1></div>
+    
+    <!-- Testimonial Form -->
+<h3></h3>
+<div class="account-login-form bg-light-gray padding-20px-all">
+  <form #testimonialForm="ngForm" (ngSubmit)="onSubmit(testimonialForm)">
+    <div class="row">
+      <div class="form-group col-md-6 required">
+        <label for="CustomerName">Your Name <span class="required span">*</span></label>
+        <input
+          id="CustomerName"
+          type="text"
+          name="name"
+          placeholder="Enter your full name"
+          [(ngModel)]="testimonial.name"
+          required
+          class="form-control"
+        />
+        <div *ngIf="testimonialForm.submitted && !testimonial.name" class="text-danger small mt-1">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group col-md-6 required">
+        <label for="CustomerRating">Rating (1 to 5) <span class="required span">*</span></label>
+        <input
+          id="CustomerRating"
+          type="number"
+          name="rating"
+          placeholder="Enter rating"
+          [(ngModel)]="testimonial.rating"
+          min="1"
+          max="5"
+          required
+          class="form-control"
+        />
+        <div *ngIf="testimonialForm.submitted && !testimonial.rating" class="text-danger small mt-1">
+          Rating is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-12 required">
+        <label for="CustomerDescription">Description <span class="required span">*</span></label>
+        <textarea
+          id="CustomerDescription"
+          name="description"
+          rows="4"
+          placeholder="Write your testimonial here"
+          [(ngModel)]="testimonial.description"
+          required
+          class="form-control"
+        ></textarea>
+        <div *ngIf="testimonialForm.submitted && !testimonial.description" class="text-danger small mt-1">
+          Description is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="text-left col-12">
+        <input type="submit" class="btn btn-primary mt-3" value="Submit Testimonial" />
+      </div>
+    </div>
+  </form>
+</div>
+<!-- End Testimonial Form -->
+
+</div><!--End Body Container-->
+

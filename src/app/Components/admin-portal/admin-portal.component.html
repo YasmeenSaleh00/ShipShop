@@ -1,0 +1,51 @@
+<div id="page-content" >        
+
+  <div class="breadcrumbs-wrapper m-0">
+    <div class="container">
+        <div class="breadcrumbs d-flex justify-content-between align-items-center">
+            <div>
+              <a routerLink="/home" title="Back to the home page">Home</a> 
+              <span aria-hidden="true">|</span> 
+              <span>Admin portal</span>
+            </div>
+          </div>
+                  </div>
+
+    
+<nav class="sidebar bg-dark text-white vh-100 d-flex flex-column shadow-sm" style="width: 240px;">
+  <div class="py-4 px-3 border-bottom">
+    <h5 class="text-center mb-0 text-white admin"><i class="fas fa-tools me-2"></i>Admin Portal</h5>
+  </div>
+
+  <div class="flex-grow-1 px-2 py-3">
+    <a routerLink="/dashboard" class="nav-link text-white mb-2">📊 Dashboard</a>
+
+    <button class="btn text-start w-100 text-white mb-2" data-bs-toggle="collapse" data-bs-target="#configMenu" style="background: none;">
+      ⚙️ Configurations ▾
+    </button>
+    <div class="collapse ps-3" id="configMenu">
+      <a routerLink="/role" class="nav-link text-white mb-1">🧩 Roles</a>
+      <a routerLink="/user" class="nav-link text-white mb-1">👤 Users</a>
+      <a routerLink="/category" class="nav-link text-white mb-1">📂 Categories</a>
+      <a routerLink="/subcategory" class="nav-link text-white mb-1">📂 SubCategories</a>
+      <a routerLink="/brand" class="nav-link text-white mb-1">🏷️ Brands</a>
+    </div>
+
+    <a routerLink="/product" class="nav-link text-white mb-2">🛍️ Products</a>
+    <a routerLink="/order-table" class="nav-link text-white mb-2">📦 Orders</a>
+    <a routerLink="/customer" class="nav-link text-white mb-2">👥 Customers</a>
+    <a routerLink="/message-table" class="nav-link text-white mb-2">📨 Messages</a>
+    <a routerLink="/testimonial-table" class="nav-link text-white mb-2">💬 Testimonials</a>
+    <a class="nav-link text-white mt-3" (click)="logOut()" >🚪 Logout</a>
+  </div>
+</nav>
+</div>
+
+
+
+
+
+
+
+
+

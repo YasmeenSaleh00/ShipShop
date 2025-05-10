@@ -1,0 +1,43 @@
+<div id="page-content">        
+  <!--Body Container-->
+  <!--Breadcrumbs-->
+  <div class="breadcrumbs-wrapper">
+      <div class="container">
+          <div class="breadcrumbs"><a routerLink="/home" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Product </span></div>
+      </div>
+  </div>
+<section class="new-arrivals py-5 bg-light">
+    <div class="container">
+      <h3 class="mb-4 text-pink text-center"><span class="span">P</span>roducts</h3>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of product" >
+          <div class="product-card h-100 d-flex flex-column align-items-center text-center p-3 bg-white shadow-sm rounded">
+            
+            <img 
+            [src]="'https://localhost:7057/Images/'+item.imageUrl"
+              [alt]="item.name" 
+              class="product-image mb-3"
+              style="width: 100px; height: 100px; object-fit: contain; cursor: pointer;"
+              [routerLink]="['/product-card-details', item.id]"
+            />
+            
+            <h3 class="product-title fs-6">{{item.name}}</h3>
+        
+            
+            <div class="product-price my-2">
+              <span class="new-price">{{item.price | currency}}</span>
+            </div>
+  
+            <div class="mt-auto w-100">
+              <button class="btn btn-pink w-100 mb-2" (click)="onAddToCart(item.id)"><i class="fas fa-shopping-bag" ></i> Add To Cart</button>
+              <button class="btn btn-pink w-100 mb-2" (click)="AddToWishList(item.id)"> <i class="fas fa-heart "></i>Add To Wishlist</button>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  

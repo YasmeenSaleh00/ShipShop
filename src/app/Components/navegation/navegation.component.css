@@ -1,0 +1,86 @@
+.nav-item:hover a {
+   color: rgb(252, 148, 183) !important;
+   transition: color 0.3s ease; 
+}
+
+.span {
+   color: rgb(252, 148, 183) !important; 
+   transition: color 0.3s ease; 
+}
+
+.span:hover {
+   color: rgb(255, 105, 180) !important; 
+   transform: scale(1.1); 
+}
+
+
+.btn-secondary{
+   background: linear-gradient(to right, #d65f87 0%, #d65f87 100%);
+    background-size: 0% 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+     border-radius: 8px;
+    transition: background-size 0.4s ease, color 0.4s ease;
+    border: #c94b73;
+
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-size: 100% 100%;
+    background-color: #c94b73;
+    color: white;
+}
+
+/* Hover effect for nav items */
+.nav-item:hover a {
+   color: rgb(252, 148, 183) !important;
+   transition: color 0.3s ease;
+ }
+ 
+ /* Icons color and hover */
+ .span {
+   color: rgb(252, 148, 183) !important;
+   transition: color 0.3s ease;
+ } */
+ /* .span:hover {
+   color: rgb(255, 105, 180) !important;
+   transform: scale(1.1);
+ }
+ 
+ /* Buttons */
+ .btn-secondary {
+   background: linear-gradient(to right, #d65f87 0%, #d65f87 100%);
+   background-size: 0% 100%;
+   background-repeat: no-repeat;
+   background-position: left center;
+   color: black;
+   font-weight: bold;
+   font-size: 16px;
+   border-radius: 8px;
+   transition: background-size 0.4s ease, color 0.4s ease;
+   border: 1px solid #c94b73;
+ }
+ .btn-secondary:hover,
+ .btn-secondary:focus,
+ .btn-secondary:active {
+   background-size: 100% 100%;
+   background-color: #c94b73;
+   color: white;
+ }
+ 
+
+ 
+ .btn-pink {
+  background-color: #f8c5d7;
+  color: #fff;
+  border: none;
+}
+
+.btn-pink:hover {
+  background-color: #f4a7c1;
+  color: #fff;
+}

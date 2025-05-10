@@ -1,0 +1,75 @@
+<div class="page-title"><h1 class="mt-4"><span class="span">C</span>reate <span class="span">A</span>n <span class="span">A</span>ccount</h1></div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 box">	
+            <div class="mb-4">
+                <h3><span class="span">P</span>ersonal <span class="span">I</span>nformation</h3>
+               <form  class="contact-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
+                      <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="CustomerFirstName">First Name <span class="required span">*</span></label>
+                                <input id="CustomerFirstName" type="text" name="first-name" placeholder="Your First Name" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.firstName">
+                                <div *ngIf="customerForm.submitted && !customer.firstName" class="text-danger small mt-1">First name is required</div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="CustomerLastName">Last Name <span class="required span">*</span></label>
+                                <input id="CustomerLastName" type="text" name="Last-name" placeholder="Your Last Name" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.lastName">                        	
+                                <div *ngIf="customerForm.submitted && !customer.lastName" class="text-danger small mt-1">Last name is required</div>
+
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="CustomerEmail">Email Address <span class="required span">*</span></label>
+                                <input id="CustomerEmail" type="email" name="email" placeholder="Write your Email" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.email">                        	
+                                <div *ngIf="customerForm.submitted && !customer.email" class="text-danger small mt-1">Email is required</div>
+
+                            </div>
+                        </div>
+                      </div>
+                    
+                    <h3><span class="span">L</span>ogin <span class="span">I</span>nformation</h3>
+                    <div *ngIf="passwordError" class="alert alert-danger">
+                        <strong>Error!</strong> Passwords do not match.
+                      </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">                                	
+                            <div class="form-group">
+                                <label for="CustomerPassword">Password <span class="required span">*</span></label>
+                                <input id="CustomerPassword" type="password" name="Password" placeholder="Write strong password" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.password">
+                                <div *ngIf="customerForm.submitted && !customer.password" class="text-danger small mt-1">Password is required</div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="CustomerConfirmPassword">Confirm Password <span class="required span">*</span></label>
+                                <input id="CustomerConfirmPassword" type="Password" name="ConfirmPassword" placeholder="" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.confirmPassword">                        	
+                                <div *ngIf="customerForm.submitted && !customer.confirmPassword" class="text-danger small mt-1">Password  is required</div>
+
+                            </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                        <div class="text-left col-12 col-sm-12 col-md-6 col-lg-6">
+                            <input type="submit" class="btn mb-3" value="Submit">
+                        </div>
+                        <div class="text-right col-12 col-sm-12 col-md-6 col-lg-6">
+                            <a routerLink="/login" style="cursor: pointer;"  >« Back To Login</a>
+                        </div>
+                     </div>
+             </form>
+            </div>
+           </div>
+    </div>
+    <!--End Main Content-->
+</div><!--End Body Container-->
+

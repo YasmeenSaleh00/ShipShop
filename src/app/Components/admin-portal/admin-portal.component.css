@@ -1,0 +1,15 @@
+
+
+.sidebar a.nav-link {
+    transition: background 0.3s, padding-left 0.3s;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .sidebar a.nav-link:hover {
+    background-color: #495057;
+    padding-left: 16px;
+    text-decoration: none;
+  }
+  .admin{
+    color: rgb(252 148 183) !important;
+  }

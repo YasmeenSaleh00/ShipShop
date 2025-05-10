@@ -1,0 +1,55 @@
+ <!-- Account Details -->
+
+    <h3><span class="span">A</span>ccount <span class="span">D</span>etails </h3>
+    <div class="account-login-form bg-light-gray padding-20px-all">
+        <form>
+            <form class="contact-form" #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
+           
+
+                <div class="row">
+                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                        <label for="CustomerFirstName">First Name <span class="required span">*</span></label>
+                        <input id="CustomerFirstName" type="text" name="firstName" placeholder="Your First Name" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.firstName">
+                        <div *ngIf="customerForm.submitted && !customer.firstName" class="text-danger small mt-1">First name is required</div>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                        <label for="CustomerLastName">Last Name <span class="required span">*</span></label>
+                                <input id="CustomerLastName" type="text" name="lastName" placeholder="Your Last Name" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.lastName">                        	
+                                <div *ngIf="customerForm.submitted && !customer.lastName" class="text-danger small mt-1">Last name is required</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                        <label for="CustomerEmail">Email Address <span class="required span">*</span></label>
+                        <input id="CustomerEmail" type="email" name="email" placeholder="Write your Email" class="" autocorrect="off" autocapitalize="off" autofocus [(ngModel)]="customer.email">                        	
+                        <div *ngIf="customerForm.submitted && !customer.email" class="text-danger small mt-1">Email is required</div>
+                    </div>
+                   
+                </div>
+                
+           
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-12 required">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="">Receive offers from our partners
+                            </label>
+                        </div>
+                        <BR>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-left col-12 col-sm-12 col-md-6 col-lg-6">
+                        <input type="submit" class="btn mb-3" value="Submit">
+                    </div>
+                
+                 </div>
+          
+       
+        </form>
+
+
+
+
+<!-- End Account Details -->

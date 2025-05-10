@@ -1,0 +1,73 @@
+
+<div class="footer footer-1">
+  <div class="footer-top clearfix">
+    <div class="container">
+      <div class="row">
+        <!-- About Us -->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3 about-us-col">
+          <img src="assets/images/logo2.png" alt="BeautyBox" width="120" class="rounded" />
+          <p><b>Address</b>: Amman-Jordan</p>
+          <p><b>Phone</b>: 0788205614</p>
+          <p><b>Email</b>: <a href="mailto:yasmeensaleh147@gmail.com">BeautyBox&#64;gmail.com</a></p>
+          <ul class="list--inline social-icons text-white">
+            <li><a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Informations -->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
+          <h4 class="h4 toggle-title" (click)="isInfoOpen = !isInfoOpen">
+            Informations
+            <i class="fas" [ngClass]="{ 'fa-chevron-down': !isInfoOpen, 'fa-chevron-up': isInfoOpen }"></i>
+          </h4>
+          <ul [ngClass]="{ 'dropdown-visible': isInfoOpen, 'dropdown-hidden': !isInfoOpen }">
+            <li><a routerLink="/aboutus">About us</a></li>
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/privacy">Privacy policy</a></li>
+            <li><a routerLink="/terms">Terms &amp; condition</a></li>
+            <li><a routerLink="/account" [appRole]="'Customer'">My Account</a></li>
+            <li><a routerLink="/testimonial-form" [appRole]="'Customer'">Your FeedBack?</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Services -->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
+          <h4 class="h4 toggle-title" (click)="isCustomerOpen = !isCustomerOpen">
+            Customer Services
+            <i class="fas" [ngClass]="{ 'fa-chevron-down': !isCustomerOpen, 'fa-chevron-up': isCustomerOpen }"></i>
+          </h4>
+          <ul [ngClass]="{ 'dropdown-visible': isCustomerOpen, 'dropdown-hidden': !isCustomerOpen }">
+            <li><a routerLink="/faqs">FAQ's</a></li>
+            <li><a routerLink="/contactus">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3 newsletter-col">
+          <div class="display-table">
+            <div class="display-table-cell footer-newsletter">
+              <form action="#" method="post">
+                <label class="h4">Newsletter</label>
+                <p>Enter your email to receive daily news and get 20% off coupon for all items.</p>
+                <div class="input-group">
+                  <input type="email" class="input-group__field newsletter-input" name="EMAIL" placeholder="Email address" required>
+                  <span class="input-group__btn">
+                    <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                      <span class="newsletter__submit-text--large">Subscribe</span>
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="copytext text-center mt-3 col-12">
+          &copy; 2025 Beauty Box. All Rights Reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

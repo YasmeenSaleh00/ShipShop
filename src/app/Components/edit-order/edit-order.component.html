@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+        <div class="card shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <h2 class="text-center mb-4">
+              Edit Order
+            </h2>
+            <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+              
+              <div class="mb-3">
+                <label for="Status" class="form-label">Status</label>
+                <select class="form-select" id="Status" name="orderStatusId" [(ngModel)]="order.orderStatusId" required >
+                  <option *ngFor="let option of orderStatuses" [value]="option.id">{{option.value}}</option>
+                </select>
+                <div *ngIf="orderForm.submitted && !order.orderStatusId" class="text-danger">Status is required</div>
+              </div>
+   
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg rounded-3">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  

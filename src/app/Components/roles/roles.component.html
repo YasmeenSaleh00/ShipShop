@@ -1,0 +1,50 @@
+<div class="card shadow-sm mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+    <strong class="fs-5">🧩 Roles List</strong>
+    <button class="btn btn-success btn-sm" routerLink="/role/add" [appRole]="'Add'" >➕ Add Role</button>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive"style="max-height: 500px; overflow-y: auto;">
+      <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Number
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortById('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortById('desc')"></i>
+            </th>
+            <th>Role Name
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByName('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortByName('desc')"></i>
+            </th>
+            <th>Created On
+              <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByCreationDate('asc')"></i>
+              <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
+            </th>
+            <th [appRole]="'Edit'">Edit</th>
+            <th [appRole]="'Delete'">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let role of roles">
+            <td>{{role.id}}</td>
+            <td>{{role.name}}</td>
+            <td>{{role.createdOn}}</td>
+            <td [appRole]="'Edit'">
+              <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-sm btn-outline-primary" [routerLink]="['/role/edit', role.id]">
+                  <i class="fas fa-edit me-2"></i>Edit
+                </button>
+              
+              </div>
+            </td>
+            <td [appRole]="'Delete'">  <button class="btn btn-sm btn-outline-danger" (click)="deleteRole(role.id)">
+              <i class="fas fa-trash me-2"></i>Delete
+            </button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

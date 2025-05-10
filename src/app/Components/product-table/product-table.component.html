@@ -1,0 +1,96 @@
+<div class="card shadow-sm mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
+      <strong class="fs-5">🛍️ Products List</strong>
+      <button class="btn btn-success btn-sm" routerLink="/product/add"    [appRole]="'Add'" >➕ Add Product</button>
+
+    </div>
+  
+    <div class="card-body">
+      <div class="table-responsive"style="max-height: 500px; overflow-y: auto;">
+        <table class="table table-hover table-bordered align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Number
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortById('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortById('desc')"></i>
+              </th>
+              <th> Name
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByName('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByName('desc')"></i>
+              </th>
+              <th> Name Ar
+              
+              </th>
+              <th>Description</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Price
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByPrice('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByPrice('desc')"></i>
+              </th>
+              <th>Tax Percentage</th>
+              <th> Status</th>
+              <th>Image</th>
+            
+              <th>Quntity</th>
+              <th>Created
+                <i class="fas fa-sort-up ms-2 me-2 text-success" (click)="sortByCreationDate('asc')"></i>
+                <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
+              </th>
+              <th>Is Active</th>
+              <th [appRole]="'Edit'">Edit</th>
+              <th [appRole]="'Delete'">Delete</th>
+
+           
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>{{product.id}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.nameAr}}</td>
+              <td>{{product.description}}</td>
+              <td>{{product.descriptionAr}}</td>
+              <td>{{product.categoryName}}</td>
+              <td>{{product.brandName}}</td>
+              <td>{{ product.price |currency}}</td>
+
+
+
+              <td>{{product.taxPercentage}}</td>
+              <td>{{product.productStatus}}</td>
+              <td><img 
+                [src]="'https://localhost:7057/Images/'+product.imageUrl"
+                [alt]="product.name" 
+                width="60" 
+                height="60" 
+                class="rounded shadow-sm border"
+                style="object-fit: contain;"
+              /></td>
+              <td>{{product.quantity}}</td>
+              <td>{{product.createdOn}}</td>
+          
+              <td>{{product.isActive}}</td>
+              <td [appRole]="'Edit'">
+                <div class="d-flex justify-content-center gap-2">
+                  <button class="btn btn-sm btn-outline-primary fs-6" [routerLink]="['/product/edit', product.id]" >
+                    ✏️ Edit
+                  </button>
+              
+                </div>
+              </td>
+              <td [appRole]="'Delete'">
+                <button class="btn btn-sm btn-outline-danger fs-6" (click)="deleteProduct(product.id)">
+                  🗑️ Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+  
+        </table>
+      </div>
+    </div>
+  </div>
+  

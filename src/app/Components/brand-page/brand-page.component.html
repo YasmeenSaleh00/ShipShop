@@ -1,0 +1,38 @@
+
+
+  <div id="page-content">        
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a routerLink="/home" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>Brand </span></div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <div class="container">
+        <div class="page-title"><h1><span class="span">B</span>rand <span class="span">P</span>age</h1></div>
+        <!--Category Simple Grid-->
+        <div class="collection-banners style3">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3 col-lg-3 collection-page-item" *ngFor="let item of brand">
+                    <div class="collection-grid-item">
+                        <div class="img">
+                            <a [routerLink]="['/product-card/brand',item.name]" class="collection-grid-item__link">
+                                <img 
+                                [src]=" item.imagePath"
+                                [alt]="item.name" 
+                                class=" lazyload rounded" 
+                               /> <span class="details">
+                                    <span class="inner">
+                                        <span class="collection-grid-item__title">{{item.name}}</span>
+                                     
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

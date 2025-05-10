@@ -1,0 +1,76 @@
+<div class="container mt-4">
+    <h2>{{ isEdit ? 'Update Product' : 'Add New Product' }}</h2>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="products.name" required />
+            <div *ngIf="productForm.submitted && !products.name" class="text-danger">Name is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="nameAr" class="form-label">Name Ar</label>
+            <input type="text" class="form-control" id="nameAr" name="nameAr" [(ngModel)]="products.nameAr" required />
+            <div *ngIf="productForm.submitted && !products.nameAr" class="text-danger">Name is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" [(ngModel)]="products.description"
+                required></textarea>
+            <div *ngIf="productForm.submitted && !products.description" class="text-danger">Description is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="descriptionAr" class="form-label">Description Ar</label>
+            <textarea class="form-control" id="descriptionAr" name="descriptionAr" [(ngModel)]="products.descriptionAr"
+                required></textarea>
+            <div *ngIf="productForm.submitted && !products.descriptionAr" class="text-danger">Description is required</div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" [(ngModel)]="products.price" required >
+            <div *ngIf="productForm.submitted && !products.price" class="text-danger">Price is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="Tax" class="form-label">Tax Percentage</label>
+            <input type="number" class="form-control" id="Tax" name="Tax" [(ngModel)]="products.taxPercentage" required >
+            <div *ngIf="productForm.submitted && !products.taxPercentage" class="text-danger">Tax Percentage is required</div>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="products.quantity" required >
+            <div *ngIf="productForm.submitted && !products.quantity" class="text-danger">Quantity is required</div>
+        </div>
+        <div class="mb-3" *ngIf="isEdit">
+            <label for="status" class="form-label">Product Status</label>
+        
+            <select class="form-select" id="status" name="status" [(ngModel)]="products.productStatusId" required>
+                <option *ngFor="let option of productStatuses" [value]="option.id">{{option.value}}</option>
+              </select>
+         
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" [(ngModel)]="products.subCategoryId" required>
+              <option *ngFor="let option of category" [value]="option.id">{{option.name}}</option>
+            </select>
+            <div *ngIf="productForm.submitted && !products.subCategoryId" class="text-danger">Category is required</div>
+          </div>
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <select class="form-select" id="brand" name="brand" [(ngModel)]="products.brandId" required>
+              <option *ngFor="let option of brand" [value]="option.id">{{option.name}}</option>
+            </select>
+            <div *ngIf="productForm.submitted && !products.brandId" class="text-danger">Brand is required</div>
+          </div>
+          <div class="mb-3">
+            <label for="img" class="form-label">Image</label>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" id="img" multiple>
+        </div>
+        
+          
+        <button type="submit" class="btn btn-primary" >
+            {{ isEdit ? 'Update' : 'Add' }}
+        </button>
+    </form>
+</div>
+  
+<!-- *ngIf="uploadedImages.length > 0" -->

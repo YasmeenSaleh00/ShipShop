@@ -1,0 +1,72 @@
+<div id="page-content">        
+    <!--Body Container-->
+    <!--Breadcrumbs-->
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="breadcrumbs"><a routerLink="/home" title="Back to the home page">Home</a> <span aria-hidden="true">|</span> <span>My Wishlit</span></div>
+        </div>
+    </div>
+    <!--End Breadcrumbs-->
+    <!--Page Title with Image-->
+    <div class="page-title"><h1><span class="span">M</span>y <span class="span">W</span>ishlist</h1></div>
+    <!--End Page Title with Image-->
+    <div class="container">
+        <div class="row">
+            <!--Main Content-->
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+              
+                    <div class="wishlist-table table-content table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                 
+                                    <th class="product-price text-center alt-font">Images</th>
+                                    <th class="product-name alt-font text-center">Product</th>
+                                    <th class="product-price text-center alt-font">Unit Price</th>
+                                    <th class="stock-status text-center alt-font">Stock Status</th>
+                                    <th class="product-subtotal text-center alt-font">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of wishList?.wishListItems">
+                                    <td class="text-center"> <img 
+                                        [src]="item.imageUrl" 
+                                        [alt]="item.productName" 
+                                        width="60" 
+                                        height="60" 
+                                        class="rounded shadow-sm border"
+                                        style="object-fit: contain;"
+                                      /></td>
+                                    <td class="text-center">{{item.productName}}</td>
+                                    <td class="text-center">{{item.price |currency}}</td>
+                                    <td class="text-center">{{item.productStatus}}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2">
+                                          <button class="btn btn-sm btn-outline-danger" (click)="onAddToCart(item.productId)" >
+                                            <i class="fas fa-shopping-bag"></i>
+                                            Add To Cart
+                                          </button>
+                                          <button class="btn btn-sm btn-outline-danger"  (click)="removeFromWishList(wishList!.id,item.productId)">
+                                            <i class="fas fa-trash me-2"></i>Delete
+                                          </button>
+                                        </div>
+                                      </td>
+                                 
+                                </tr>
+                            </tbody>
+                         
+                        </table>
+                    </div>
+                    <div class="text-start mt-3">
+                        <a routerLink="/product-card" class="btn btn-sm btn-outline-danger">
+                          <i class="fas fa-arrow-circle-left me-2"></i> Continue Shopping
+                        </a>
+                      </div>
+                                
+               </div>
+            <!--End Main Content-->
+        </div>
+    
+    </div><!--End Body Container-->
+    
+</div><!--End Page Wrapper-->

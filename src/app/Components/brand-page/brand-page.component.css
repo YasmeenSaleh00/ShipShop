@@ -1,0 +1,13 @@
+ .category-card, .product-card {
+  
+    border-radius: 50%;
+    padding: 15px;
+    transition: 0.3s;
+  }
+  
+  .category-card:hover, .product-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .span {
+    color:  rgb(252, 148, 183);
+  }

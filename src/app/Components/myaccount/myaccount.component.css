@@ -1,0 +1,26 @@
+.span{
+   color:  rgb(252, 148, 183);
+}
+
+.btn-link {
+   background: linear-gradient(to right, #d65f87 0%, #d65f87 100%);
+   background-size: 0% 100%;
+   background-repeat: no-repeat;
+   background-position: left center;
+   padding-left: 10px;
+   padding-right: 10px;
+
+   font-weight: bold;
+   font-size: 16px;
+ border-radius: 8px;
+   transition: background-size 0.4s ease, color 0.4s ease;
+ }
+ 
+ .btn-link:hover {
+   background-size: 100% 100%;
+   color: white;
+ 
+ }
+ a:hover{
+   color: #d65f87;
+ }

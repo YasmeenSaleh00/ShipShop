@@ -1,0 +1,34 @@
+.span{
+    color:  rgb(252, 148, 183);
+}
+
+
+.btn-outline-danger {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    color: #d65f87 ;
+    border: 2px solid #d65f87 ;
+    transition: color 0.4s ease;
+    z-index: 1;
+  }
+  
+  .btn-outline-danger::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #d65f87 ;
+    z-index: -1;
+    transition: width 0.4s ease;
+  }
+  
+  .btn-outline-danger:hover::before {
+    width: 100%;
+  }
+  
+  .btn-outline-danger:hover {
+    color: white;
+  }
