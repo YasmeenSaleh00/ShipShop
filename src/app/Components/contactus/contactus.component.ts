@@ -2,19 +2,20 @@ import { Component } from '@angular/core';
 import { MessageService } from '../../Services/message.service';
 import { Router } from '@angular/router';
 import { Messages } from '../../Interfaces/Message';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-contactus',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,NgIf],
   templateUrl: './contactus.component.html',
   styleUrl: './contactus.component.css'
 })
 export class ContactusComponent {
-constructor(private messageService:MessageService,private router:Router){}
-
+constructor(private messageService:MessageService){}
+successMessage:string=""
 message:Messages={
   id: 0,
   name: '',
@@ -28,8 +29,9 @@ onSubmit(form:any){
      if (form.invalid) return;
     this.messageService.CreateMessage(this.message).subscribe({
   next: () => {
-    alert("Your message has been sent successfully.");
-    this.router.navigate(['/home']);
+   this.successMessage = "Your message has been sent successfully.";
+
+  
   },
   error: (err) => {
     console.error(err);

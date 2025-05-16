@@ -7,7 +7,7 @@
         <th>Product</th>
         <th>Image</th>
         <th>Date</th>
-        <th>Status</th>
+        <th>Quantity</th>
         <th>Total</th>
       </tr>
     </thead>
@@ -28,8 +28,8 @@
           </td>
 
           <td>{{ order.orderDate }}</td>
-          <td>{{ order.orderStatus }}</td>
-          <td>{{ order.totalPrice }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.unitPrice }}</td>
         </tr>
       </ng-container>
     </tbody>
