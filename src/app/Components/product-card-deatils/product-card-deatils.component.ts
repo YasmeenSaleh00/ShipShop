@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { WishList } from '../../Interfaces/WishList';
 import { WishlistService } from '../../Services/wishlist.service';
 import { AuthService } from '../../Services/auth.service';
-import { RoleDirective } from '../../Directive/role.directive';
+
 
 @Component({
   selector: 'app-product-card-deatils',
   standalone: true,
-  imports: [CurrencyPipe,RouterLink,FormsModule,RoleDirective],
+  imports: [CurrencyPipe,RouterLink,FormsModule],
   templateUrl: './product-card-deatils.component.html',
   styleUrl: './product-card-deatils.component.css'
 })

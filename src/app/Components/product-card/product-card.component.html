@@ -28,7 +28,7 @@
               <span class="new-price">{{item.price | currency}}</span>
             </div>
   
-            <div class="mt-auto w-100" [appRole]="'Customer'">
+            <div class="mt-auto w-100" >
               <button class="btn btn-pink w-100 mb-2" (click)="onAddToCart(item.id)"><i class="fas fa-shopping-bag" ></i> Add To Cart</button>
               <button class="btn btn-pink w-100 mb-2" (click)="AddToWishList(item.id)"> <i class="fas fa-heart "></i>Add To Wishlist</button>
             </div>

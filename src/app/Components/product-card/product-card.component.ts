@@ -9,12 +9,11 @@ import { CartModel } from '../../Interfaces/CartModel';
 import { WishlistService } from '../../Services/wishlist.service';
 import { WishList } from '../../Interfaces/WishList';
 import { AuthService } from '../../Services/auth.service';
-import { RoleDirective } from '../../Directive/role.directive';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [NgFor,CurrencyPipe,RouterLink,RoleDirective],
+  imports: [NgFor,CurrencyPipe,RouterLink],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css'
 })

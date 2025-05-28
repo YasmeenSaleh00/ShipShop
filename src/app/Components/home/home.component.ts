@@ -17,12 +17,11 @@ import { SubcategoryService } from '../../Services/subcategory.service';
 import { Testimonial } from '../../Interfaces/Testimonial';
 import { TestimonialService } from '../../Services/testimonial.service';
 import { AuthService } from '../../Services/auth.service';
-import { RoleDirective } from '../../Directive/role.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor,CurrencyPipe,RouterLink,NgIf,RoleDirective],
+  imports: [NgFor,CurrencyPipe,RouterLink,NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
