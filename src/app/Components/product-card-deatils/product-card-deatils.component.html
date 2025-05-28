@@ -40,7 +40,7 @@
                             {{products?.description}}
                         </div>
                     
-                        <form method="post" action="#" class="product-form product-form-product-template hidedropdown">
+                        <form method="post" action="#" class="product-form product-form-product-template hidedropdown" [appRole]="'Customer'">
                             <!-- Product Action -->
                             <div class="product-action clearfix">
                                 <div class="product-form__item--quantity">
@@ -56,7 +56,7 @@
                                           >                                        </div>
                                     </div>
                                 </div>                                
-                                <div class="product-form__item--submit">
+                                <div class="product-form__item--submit" >
                                     <button type="button" name="add" class="btn product-form__cart-submit" (click)="addToCart(products!.id,quantity)">
                                         <span>Add to cart</span>
                                     </button>

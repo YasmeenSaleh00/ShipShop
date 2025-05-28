@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../Services/product.service';
 import { Product } from '../../Interfaces/Product';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { CartService } from '../../Services/cart.service';
 import { TokenService } from '../../Services/token.service';
@@ -9,11 +9,13 @@ import { CartModel } from '../../Interfaces/CartModel';
 import { FormsModule } from '@angular/forms';
 import { WishList } from '../../Interfaces/WishList';
 import { WishlistService } from '../../Services/wishlist.service';
+import { AuthService } from '../../Services/auth.service';
+import { RoleDirective } from '../../Directive/role.directive';
 
 @Component({
   selector: 'app-product-card-deatils',
   standalone: true,
-  imports: [CurrencyPipe,RouterLink,FormsModule],
+  imports: [CurrencyPipe,RouterLink,FormsModule,RoleDirective],
   templateUrl: './product-card-deatils.component.html',
   styleUrl: './product-card-deatils.component.css'
 })
@@ -22,7 +24,9 @@ constructor(private productService:ProductService,
   private route:ActivatedRoute,
   private cartService:CartService,
   private tokenService:TokenService,
-private wishListService:WishlistService){}
+private wishListService:WishlistService,
+private router:Router,
+private authservice:AuthService){}
 
 products:Product| null =null;
 cart:CartModel | null=null;
@@ -47,6 +51,10 @@ loadCart() {
 }
 
 addToCart(productId: number,quantity:number){
+    if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
   const customerId = this.tokenService.getUserId();
   this.cartService.addToCart({customerId,productId,quantity}).subscribe({
     next: (res) => {
@@ -56,7 +64,7 @@ addToCart(productId: number,quantity:number){
     },
     error: (err) => {
      
-      alert('  There is an Problem  ❌ ');
+  alert('There was an error adding to cart ❌');
     }
   });
 }
@@ -74,6 +82,10 @@ loadWishList(){
 }
 addToWishList(productId: number){
   const customerId = this.tokenService.getUserId();
+      if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
 this.wishListService.addToWishList({customerId,productId}).subscribe({
   next: (res) => {
     console.log('Added ', res);
@@ -81,8 +93,8 @@ this.wishListService.addToWishList({customerId,productId}).subscribe({
     this.loadWishList(); 
   },
   error: (err) => {
-   
-    alert('Already Exist ❌ ');
+  alert('Already Exists in WishList ❌');
+
   }
 });
 }

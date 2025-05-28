@@ -6,7 +6,7 @@ import { CategoryService } from '../../Services/category.service';
 import { Category } from '../../Interfaces/Category';
 import { Brand } from '../../Interfaces/Brand';
 import { BrandService } from '../../Services/brand.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartModel } from '../../Interfaces/CartModel';
 import { WishList } from '../../Interfaces/WishList';
 import { CartService } from '../../Services/cart.service';
@@ -16,11 +16,13 @@ import { SubCategory } from '../../Interfaces/SubCategory';
 import { SubcategoryService } from '../../Services/subcategory.service';
 import { Testimonial } from '../../Interfaces/Testimonial';
 import { TestimonialService } from '../../Services/testimonial.service';
+import { AuthService } from '../../Services/auth.service';
+import { RoleDirective } from '../../Directive/role.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor,CurrencyPipe,RouterLink,NgIf],
+  imports: [NgFor,CurrencyPipe,RouterLink,NgIf,RoleDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -39,7 +41,9 @@ constructor(private productService:ProductService,
   private cartService:CartService,
   private wishListService:WishlistService,
   private tokenService:TokenService,
-  private testmonialService:TestimonialService
+  private testmonialService:TestimonialService,
+  private router:Router,
+  private authservice:AuthService
 ){
   
 }
@@ -56,18 +60,26 @@ constructor(private productService:ProductService,
   addToCart(productId:number){
     const customerId = this.tokenService.getUserId();
     const quantity = 1;
+     if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
     this.cartService.addToCart({customerId,productId,quantity}).subscribe({
       next:(res)=>{
         this.cart=res;
         alert('Added To Cart Successfully 🎉')
       },
       error:(err)=>{
-        alert('There is an Problem');
+  alert('There was an error adding to cart ❌');
       }
     })
   }
   addToWishList(productId:number){
     const customerId = this.tokenService.getUserId();
+ if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
   
     this.wishListService.addToWishList({customerId,productId}).subscribe({
       next:(res)=>{
@@ -75,7 +87,7 @@ constructor(private productService:ProductService,
         alert('Added To WishList Successfully 🎉')
       },
       error:(err)=>{
-        alert('Already Exist ❌ ');
+      alert('Already Exists in WishList ❌');
       }
     })
   }

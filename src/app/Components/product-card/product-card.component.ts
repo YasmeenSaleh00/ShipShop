@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../Services/product.service';
 import { Product } from '../../Interfaces/Product';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { CartService } from '../../Services/cart.service';
 import { TokenService } from '../../Services/token.service';
 import { CartModel } from '../../Interfaces/CartModel';
 import { WishlistService } from '../../Services/wishlist.service';
 import { WishList } from '../../Interfaces/WishList';
+import { AuthService } from '../../Services/auth.service';
+import { RoleDirective } from '../../Directive/role.directive';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [NgFor,CurrencyPipe,RouterLink],
+  imports: [NgFor,CurrencyPipe,RouterLink,RoleDirective],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css'
 })
@@ -25,7 +27,9 @@ export class ProductCardComponent implements OnInit {
     private route:ActivatedRoute,
     private cartService:CartService,
     private tokenService:TokenService,
-    private wishListService:WishlistService){}
+    private wishListService:WishlistService,
+  private router:Router,
+private authservice:AuthService){}
   ngOnInit(): void {
     const brandName = this.route.snapshot.paramMap.get('brandName');
     const categoryName = this.route.snapshot.paramMap.get('categoryName');
@@ -63,7 +67,10 @@ export class ProductCardComponent implements OnInit {
   onAddToCart(productId: number) {
     const quantity = 1;
     const customerId = this.tokenService.getUserId();
-  
+  if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
     this.cartService.addToCart({ customerId, productId, quantity }).subscribe({
       next: (res) => {
         console.log('Added ', res);
@@ -72,8 +79,7 @@ export class ProductCardComponent implements OnInit {
       },
       error: (err) => {
        
-        alert('  There is an Problem  ❌ ');
-      }
+  alert('There was an error adding to cart ❌');      }
     });
   }
   loadWishList(){
@@ -91,6 +97,10 @@ export class ProductCardComponent implements OnInit {
   
   AddToWishList(productId:number){
     const customerId = this.tokenService.getUserId();
+    if (!this.authservice.getToken()) {
+    this.router.navigate(['/login']);
+    return;
+  }
     this.wishListService.addToWishList({customerId,productId}).subscribe({
       next: (res) => {
         console.log('Added ', res);
@@ -99,8 +109,8 @@ export class ProductCardComponent implements OnInit {
       },
       error: (err) => {
        
-        alert('Already Exist ❌ ');
-      }
+  alert('Already Exists in WishList ❌');
+   }
     });
   }
 
