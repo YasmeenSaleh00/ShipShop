@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TestimonialService } from '../../Services/testimonial.service';
 import { Testimonial } from '../../Interfaces/Testimonial';
 import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-testimonial-table',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,RouterLink],
   templateUrl: './testimonial-table.component.html',
   styleUrl: './testimonial-table.component.css'
 })

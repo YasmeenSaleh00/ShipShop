@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../Services/message.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Messages } from '../../Interfaces/Message';
 import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-messages-table',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,RouterLink],
   templateUrl: './messages-table.component.html',
   styleUrl: './messages-table.component.css'
 })

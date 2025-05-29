@@ -3,11 +3,12 @@ import { CustomerService } from '../../Services/customer.service';
 import { Customer } from '../../Interfaces/Customer';
 import { NgFor } from '@angular/common';
 import { RoleDirective } from '../../Directive/role.directive';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-customer-table',
   standalone: true,
-  imports: [NgFor,RoleDirective],
+  imports: [NgFor,RoleDirective,RouterLink],
   templateUrl: './customer-table.component.html',
   styleUrl: './customer-table.component.css'
 })
