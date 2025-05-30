@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavegationComponent } from "./Components/navegation/navegation.component";
 import { FooterComponent } from "./Components/footer/footer.component";
-import { NgIf } from '@angular/common';
+
 
 
 
@@ -28,4 +28,5 @@ export class AppComponent {
   onWindowScroll() {
     this.isButtonVisible = window.scrollY > 300;
   }
+
 }

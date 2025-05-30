@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../Interfaces/Product';
 
 import { AuthService } from './auth.service';
-import { AddProduct } from '../Interfaces/AddProduct';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,11 +26,11 @@ export class ProductService {
     getProductById(id:number):Observable<Product>{
       return this.http.get<Product>(this.Url + `/${id}`);
     }
-    addProduct(product:AddProduct){
-      return this.http.post<AddProduct>(this.Url,product,this.getHeaders());
+    addProduct(product:Product){
+      return this.http.post<Product>(this.Url,product,this.getHeaders());
     }
   
-    updateProduct(id:number,product:AddProduct){
+    updateProduct(id:number,product:Product){
       return this.http.put<Product>(this.Url+`/${id}`,product,this.getHeaders());
     }
   
@@ -38,27 +38,27 @@ export class ProductService {
         return this.http.delete(this.Url+`/${id}`,this.getHeaders());
     }
     sortByCreationDate(sortDirection:string){
-    return this.http.get<Product[]>(`${this.Url}/sort-by-creation-date/${sortDirection}`,this.getHeaders())
+    return this.http.get<Product[]>(`${this.Url}/sort-by-creation-date/${sortDirection}`)
     }
     sortByName(sortDirection:string){
-      return this.http.get<Product[]>(`${this.Url}/sort-by-name/${sortDirection}`,this.getHeaders())
+      return this.http.get<Product[]>(`${this.Url}/sort-by-name/${sortDirection}`)
     }
     
     sortByPrice(sortDirection:string){
-      return this.http.get<Product[]>(`${this.Url}/sort-by-price/${sortDirection}`,this.getHeaders())
+      return this.http.get<Product[]>(`${this.Url}/sort-by-price/${sortDirection}`)
     }
     sortById(sortDirection:string){
-      return this.http.get<Product[]>(`${this.Url}/sort-by-id/${sortDirection}`,this.getHeaders())
+      return this.http.get<Product[]>(`${this.Url}/sort-by-id/${sortDirection}`)
     
     }
     getProductByCategory(categoryName:string):Observable<Product[]>{
       
-      return this.http.get<Product[]>(`${this.Url}/GetByFilters/${categoryName}`,this.getHeaders())
+      return this.http.get<Product[]>(`${this.Url}/GetByFilters/${categoryName}`)
     }
 
     getProductByBrandName(brandName:string):Observable<Product[]>{
       
-      return this.http.get<Product[]>(`${this.Url}/GetByBrand/${brandName}`,this.getHeaders())
+      return this.http.get<Product[]>(`${this.Url}/GetByBrand/${brandName}`)
     }
     searchProducts(name: string): Observable<Product[]> {
       return this.http.get<Product[]>(`${this.Url}/search/${name}`);

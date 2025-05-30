@@ -28,13 +28,13 @@ export class CartComponent implements OnInit {
  
 
     const customerId = this.tokenService.getUserId();
-    console.log('customerID from token:', customerId); 
+  
   
     if(customerId ){
       this.cartService.getCartByCustomerId(customerId).subscribe({
         next: (data) => {
           this.cart = data;
-          console.log('Cart from API:', this.cart);
+  
 
         },
         error: (err) => {

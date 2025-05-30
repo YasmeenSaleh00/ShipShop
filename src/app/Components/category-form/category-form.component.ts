@@ -52,18 +52,18 @@ export class CategoryFormComponent implements OnInit {
     if (form.invalid) return;
 
     if (this.selectedFile) {
-      // ارفع الصورة أولاً
+      
       this.imageService.uploadImage(this.selectedFile).subscribe({
-        next: (uploadedImageName:string) => {
-          this.category.imageUrl = uploadedImageName; // خزن اسم الصورة
+        next: (imageName:string) => {
+          this.category.imageUrl = imageName; 
           this.saveCategory();
         },
         error: (err) => {
-          console.error('خطأ أثناء رفع الصورة', err);
+          console.error( err);
         }
       });
     } else {
-      // لا يوجد صورة، كمل الحفظ
+   
       this.saveCategory();
     }
   }
@@ -75,12 +75,12 @@ export class CategoryFormComponent implements OnInit {
     if (this.isEdit) {
       this.categoryService.updateCategory(this.category.id, this.category).subscribe({
         next: () => this.router.navigate(['/category']),
-        error: (err) => console.error('خطأ أثناء تعديل الكاتيجوري', err)
+        error: (err) => console.error( err)
       });
     } else {
       this.categoryService.addCategory(this.category).subscribe({
         next: () => this.router.navigate(['/category']),
-        error: (err) => console.error('خطأ أثناء إضافة الكاتيجوري', err)
+        error: (err) => console.error( err)
       });
     }
   }

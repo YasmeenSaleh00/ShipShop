@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../Services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddProduct } from '../../Interfaces/AddProduct';
 import { BrandService } from '../../Services/brand.service';
 import { Category } from '../../Interfaces/Category';
 import { Brand } from '../../Interfaces/Brand';
@@ -22,7 +21,7 @@ import { LookupTypeModel } from '../../Interfaces/LookupTypeModel';
   styleUrl: './product-form.component.css'
 })
 export class ProductFormComponent implements OnInit{
-  products:AddProduct={
+  products:Product={
     name: '',
     description: '',
     price: 0,
@@ -33,9 +32,15 @@ export class ProductFormComponent implements OnInit{
     nameAr: '',
     quantity: 0,
     subCategoryId: 0,
-    productStatusId: 0
+    productStatusId: 0,
+    id: 0,
+    categoryName: '',
+    brandName: '',
+    productStatus: '',
+    createdOn: '',
+    updatedOn: null,
+    isActive: false
   }
-  product!:Product
   isEdit:boolean=false;
   category:Category[]=[];
   brand:Brand[]=[];
@@ -58,17 +63,15 @@ constructor(private productService:ProductService,
           this.productStatuses = data;
         },
         error: (error) => {
-          console.error('Error fetching lookup statuses:', error);
+          console.error( error);
         }
       });
     }
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id)
-
     if (id) {
       this.isEdit = true;
       this.productService.getProductById(+id).subscribe(data => {
-        this.product = data;
+        this.products = data;
       
      
       });    }
@@ -87,34 +90,32 @@ constructor(private productService:ProductService,
   }
   onSubmit(form: any): void {
     if (form.invalid) return;
-
-
     if (this.selectedFile) {
       this.imageService.uploadImage(this.selectedFile).subscribe({
-        next: (uploadedImageName: string) => {
-          this.products.imageUrl = uploadedImageName; 
+        next: (imageName: string) => {
+          this.products.imageUrl = imageName; 
           this.saveProduct();
         },
         error: (err) => {
-          console.error('خطأ أثناء رفع الصورة', err);
+          console.error( err);
         }
       });
     } else {
    
-      this.products.imageUrl = this.product.imageUrl;
+      this.products.imageUrl = this.products.imageUrl;
       this.saveProduct();
     }
   }
   private saveProduct(): void {
     if (this.isEdit) {
-      this.productService.updateProduct(this.product.id, this.products).subscribe({
+      this.productService.updateProduct(this.products.id, this.products).subscribe({
         next: () => this.router.navigate(['/product']),
-        error: (err) => console.error('خطأ أثناء تعديل المنتج', err)
+        error: (err) => console.error( err)
       });
     } else {
       this.productService.addProduct(this.products).subscribe({
         next: () => this.router.navigate(['/product']),
-        error: (err) => console.error('خطأ أثناء إضافة المنتج', err)
+        error: (err) => console.error(err)
       });
     }
   }

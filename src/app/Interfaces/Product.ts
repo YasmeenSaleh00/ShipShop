@@ -13,11 +13,10 @@ export interface Product{
     updatedOn:string|null,
     isActive:boolean,
     imageUrl:string,
-    quantity:number
-
-   
-
-
+    quantity:number,
+    brandId:number,
+    subCategoryId: number,
+    productStatusId: number
 }
 
 

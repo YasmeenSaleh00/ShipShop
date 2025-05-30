@@ -6,7 +6,7 @@ export const AuthGuard:CanActivateFn=()=>{
     //عملنا حقن ل service
     const authService = inject(AuthService);
     const router = inject(Router);
-//نشييك اذا فيه toke
+//نشييك اذا فيه token
     if(authService.getToken()){
         return true;
     }

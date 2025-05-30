@@ -17,13 +17,13 @@ export class UserService {
     return { headers: { Authorization: `Bearer ${this.authService.getToken()}` } };
   }
   getUsers(): Observable<any> {
-return this.http.get<User[]>(this.Url,this.getHeaders());}
+return this.http.get<User[]>(this.Url);}
 
 getUsersCount():Observable<number>{
   return this.http.get<number>(`${this.Url}/count`);
 }
  getUserById(id:number){
-     return this.http.get<User>(this.Url + `/${id}`,this.getHeaders());
+     return this.http.get<User>(this.Url + `/${id}`);
  
 }
   addUser(user:AddUser){
@@ -38,17 +38,17 @@ getUsersCount():Observable<number>{
     return this.http.delete(this.Url+`/${id}`,this.getHeaders());
 }
 sortByCreationDate(sortDirection:string){
-return this.http.get<User[]>(`${this.Url}/sort-by-creation date/${sortDirection}`,this.getHeaders())
+return this.http.get<User[]>(`${this.Url}/sort-by-creation date/${sortDirection}`)
 }
 sortByName(sortDirection:string){
-  return this.http.get<User[]>(`${this.Url}/sort-by-Name/${sortDirection}`,this.getHeaders())
+  return this.http.get<User[]>(`${this.Url}/sort-by-Name/${sortDirection}`)
 }
 
 sortByEmail(sortDirection:string){
-  return this.http.get<User[]>(`${this.Url}/sort-by-Email/${sortDirection}`,this.getHeaders())
+  return this.http.get<User[]>(`${this.Url}/sort-by-Email/${sortDirection}`)
 }
 sortById(sortDirection:string){
-  return this.http.get<User[]>(`${this.Url}/sort-by-Id/${sortDirection}`,this.getHeaders())
+  return this.http.get<User[]>(`${this.Url}/sort-by-Id/${sortDirection}`)
 
 }
 }

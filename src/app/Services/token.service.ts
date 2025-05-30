@@ -5,9 +5,7 @@ import { MyToken } from '../Interfaces/MyToken';
   providedIn: 'root'
 })
 export class TokenService {
-  getWishlistId() :number {
-    const decoded = this.decodeToken();
-    return decoded ? +decoded.WishlistId : 0;   }
+
 
   constructor() { }
 
@@ -32,18 +30,21 @@ export class TokenService {
   }
 
   getUserId(): number  {
-    const decoded = this.decodeToken();
-    return decoded ? +decoded.nameid : 0;  
+    const myToken = this.decodeToken();
+    return myToken ? +myToken.nameid : 0;  
   }
 
   getCartId(): number  {
-    const decoded = this.decodeToken();
-    return decoded ? +decoded.CartId : 0;  
+    const myToken = this.decodeToken();
+    return myToken ? +myToken.CartId : 0;  
   }
-
+  getWishlistId() :number {
+    const myToken = this.decodeToken();
+    return myToken ? +myToken.WishlistId : 0;  
+   }
   getRole(): string | null {
-    const decoded = this.decodeToken();
-    return decoded ? decoded.role : null;    
+    const myToken = this.decodeToken();
+    return myToken ? myToken.role : null;    
   }
 
 }
