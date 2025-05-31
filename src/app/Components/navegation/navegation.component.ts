@@ -29,6 +29,7 @@ export class NavegationComponent {
   onSearch() {
     if (this.searchKeyword) {
       this.router.navigate(['/product-card'], { queryParams: { keyword: this.searchKeyword } });
+      this.searchKeyword = ''; 
     }
   }
  

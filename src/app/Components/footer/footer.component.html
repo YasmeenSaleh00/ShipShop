@@ -20,7 +20,7 @@
         <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
           <h4 class="h4 toggle-title" (click)="isInfoOpen = !isInfoOpen">
             Informations
-            <i class="fas" [ngClass]="{ 'fa-chevron-down': !isInfoOpen, 'fa-chevron-up': isInfoOpen }"></i>
+            <i class="fas " [ngClass]="{ 'fa-chevron-down': !isInfoOpen, 'fa-chevron-up': isInfoOpen }"></i>
           </h4>
           <ul [ngClass]="{ 'dropdown-visible': isInfoOpen, 'dropdown-hidden': !isInfoOpen }">
             <li><a routerLink="/aboutus">About us</a></li>

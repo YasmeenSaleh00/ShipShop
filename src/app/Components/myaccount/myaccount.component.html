@@ -9,7 +9,7 @@
                 <div>
                   <a routerLink="/home" title="Back to the home page">Home</a> 
                   <span aria-hidden="true">|</span> 
-                  <span>My Account</span>
+                  <span>My Account </span>
                 </div>
                 <button class="btn btn-link nav-link  span" (click)="logOut()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
               </div>
@@ -52,9 +52,9 @@
            
                 <ul class="nav flex-column dashboard-list" role="tablist">
 
-                    <li><a class="nav-link" [class.active]="activeTab === 'orders'" (click)="setTab('orders')">Orders</a></li>
-                    <li><a class="nav-link"  [class.active]="activeTab === 'account-details'" (click)="setTab('account-details')">Account details</a></li>
-                    <li><a class="nav-link" [class.active]="activeTab === 'testimonial'" (click)="setTab('testimonial')">testimonial</a></li>
+                    <li><a class="nav-link"  (click)="setTab('orders')">Orders</a></li>
+                    <li><a class="nav-link"  (click)="setTab('account-details')">Account details</a></li>
+                    <li><a class="nav-link" (click)="setTab('testimonial')">testimonial</a></li>
 
                     <li><a class="nav-link" (click)="logOut()">logout</a></li>
                 </ul>

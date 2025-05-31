@@ -7,6 +7,7 @@ import { AccountDetailsComponent } from "../account-details/account-details.comp
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../Services/auth.service';
 import { TestimonialCustomerComponent } from "../testimonial-customer/testimonial-customer.component";
+import { Customer } from '../../Interfaces/Customer';
 
 
 @Component({
@@ -19,13 +20,15 @@ import { TestimonialCustomerComponent } from "../testimonial-customer/testimonia
 export class MyaccountComponent implements OnInit  {
   activeTab: string = '';
 
-  setTab(tabName: string) {
-    this.activeTab = tabName;
-  }
+
 constructor(private customerService:CustomerService,private authService:AuthService,private router:Router){}
 ngOnInit(): void {
   this.setTab('account-details'); 
+
 }
+  setTab(tabName: string) {
+    this.activeTab = tabName;
+  }
 logOut(){
 this.authService.logOut();
 this.router.navigate(['/login']);

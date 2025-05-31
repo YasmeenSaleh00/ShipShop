@@ -30,26 +30,27 @@ export class ProductCardComponent implements OnInit {
   private router:Router,
 private authservice:AuthService){}
   ngOnInit(): void {
-    const brandName = this.route.snapshot.paramMap.get('brandName');
-    const categoryName = this.route.snapshot.paramMap.get('categoryName');
-  
-    if (categoryName) {
-      this.productService.getProductByCategory(categoryName).subscribe(data => this.product = data);
-    } 
-    else if (brandName) {
-      this.productService.getProductByBrandName(brandName).subscribe(data => this.product = data);
-    }
-    else{
-      this.productService.getProducts().subscribe(data=>this.product=data);
-    }
-    this.route.queryParams.subscribe(params => {
-      const keyword = params['keyword'];
-      if (keyword) {
-        this.productService.searchProducts(keyword).subscribe(products => {
-          this.product = products;
-        });
+ this.route.queryParams.subscribe(params => {
+    const keyword = params['keyword'];
+    if (keyword) {
+      this.productService.searchProducts(keyword).subscribe(products => {
+        this.product = products;
+      });
+    } else {
+      const brandName = this.route.snapshot.paramMap.get('brandName');
+      const categoryName = this.route.snapshot.paramMap.get('categoryName');
+    
+      if (categoryName) {
+        this.productService.getProductByCategory(categoryName).subscribe(data => this.product = data);
+      } 
+      else if (brandName) {
+        this.productService.getProductByBrandName(brandName).subscribe(data => this.product = data);
       }
-    });
+      else {
+        this.productService.getProducts().subscribe(data => this.product = data);
+      }
+    }
+  });
   }
   loadCart() {
     const customerId = this.tokenService.getUserId();

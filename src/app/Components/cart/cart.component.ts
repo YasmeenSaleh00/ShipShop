@@ -85,7 +85,7 @@ export class CartComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.error(' Error ❌', err);
+        console.error(' Error ', err);
         alert(' There is an Error ❌');
       }
     });
