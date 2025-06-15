@@ -6,6 +6,7 @@ import { CustomerService } from '../../Services/customer.service';
 import { NgIf } from '@angular/common';
 import { UpdateCustomer } from '../../Interfaces/UpdateCustomer';
 import { TokenService } from '../../Services/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-account-details',
@@ -37,11 +38,24 @@ onSubmit(form: any) {
   this.customerService.updateCustomer(this.customer.id, this.customer)
     .subscribe({
       next: () => {
-        alert('Customer updated successfully');
-        this.router.navigate(['/account']);
+      Swal.fire({
+                                   title: 'Updated Successfully 🎉 ',
+                                   icon: 'success',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                                 }).then(()=>{
+    this.router.navigate(['/account']);
+                                 })
+    
       },
       error: (err) => {
-        console.error('Update failed', err);
+             Swal.fire({
+                                   title: 'Updated Failed  ',
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                                 })
+   
       }
     });
 }

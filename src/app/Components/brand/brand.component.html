@@ -46,7 +46,7 @@
             <td>{{ brand.nameAr }}</td>
             <td>
               <img 
-                [src]="brand.imagePath" 
+           [src]= "'https://localhost:7057/Images/' + brand.imagePath"
                 [alt]="brand.name" 
                 width="60" 
                 height="60" 

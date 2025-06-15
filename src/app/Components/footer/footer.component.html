@@ -24,7 +24,7 @@
           </h4>
           <ul [ngClass]="{ 'dropdown-visible': isInfoOpen, 'dropdown-hidden': !isInfoOpen }">
             <li><a routerLink="/aboutus">About us</a></li>
-            <li><a routerLink="/login">Login</a></li>
+            <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
             <li><a routerLink="/privacy">Privacy policy</a></li>
             <li><a routerLink="/terms">Terms &amp; condition</a></li>
             <li><a routerLink="/account" [appRole]="'Customer'">My Account</a></li>
@@ -44,26 +44,7 @@
           </ul>
         </div>
 
-        <!-- Newsletter -->
-        <div class="col-12 col-sm-12 col-md-4 col-lg-3 newsletter-col">
-          <div class="display-table">
-            <div class="display-table-cell footer-newsletter">
-              <form action="#" method="post">
-                <label class="h4">Newsletter</label>
-                <p>Enter your email to receive daily news and get 20% off coupon for all items.</p>
-                <div class="input-group">
-                  <input type="email" class="input-group__field newsletter-input" name="EMAIL" placeholder="Email address" required>
-                  <span class="input-group__btn">
-                    <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
-                      <span class="newsletter__submit-text--large">Subscribe</span>
-                    </button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
+   
         <div class="copytext text-center mt-3 col-12">
           &copy; 2025 Beauty Box. All Rights Reserved.
         </div>

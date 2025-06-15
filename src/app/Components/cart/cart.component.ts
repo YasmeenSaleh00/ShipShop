@@ -6,6 +6,7 @@ import { TokenService } from '../../Services/token.service';
 import { RouterLink } from '@angular/router';
 import {  FormsModule } from '@angular/forms';
 import { CartItemModel } from '../../Interfaces/CartItemModel';
+import Swal from 'sweetalert2';
 
 
 
@@ -51,10 +52,22 @@ export class CartComponent implements OnInit {
           if (this.cart) {
             this.cart.items = this.cart.items.filter(item => item.productId !== productId);
           }
-          alert('Removed From Cart Successfully');
+          Swal.fire({
+                             title: 'Removed From Cart Successfully',
+                             icon: 'success',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+         
         },
         error: (err) => {
-          console.error('Error removing item from cart:', err);
+             Swal.fire({
+                             title: 'Error removing item from cart',
+                             icon: 'error',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+      
         }
       });
     }
@@ -76,17 +89,29 @@ export class CartComponent implements OnInit {
     const customerId=this.tokenService.getUserId()
     this.cartService.updateCartItemQuantity({customerId,productId,quantity}).subscribe({
       next: () => {
-        console.log(' Updated Successfully ✅');
+ 
+         
         if (this.cart) {
           const item = this.cart.items.find(item => item.productId === productId);
           if (item) {
             item.quantity = quantity;
           }
         }
+                Swal.fire({
+                             title: 'Updated Successfully ✅',
+                             icon: 'success',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
       },
       error: (err) => {
-        console.error(' Error ', err);
-        alert(' There is an Error ❌');
+     Swal.fire({
+                             title: 'There is an Error ❌',
+                             icon: 'error',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+      
       }
     });
   }

@@ -19,7 +19,7 @@
                         <div class="img">
                             <a [routerLink]="['/product-card/brand',item.name]" class="collection-grid-item__link">
                                 <img 
-                                [src]=" item.imagePath"
+                           [src]= "'https://localhost:7057/Images/' + item.imagePath"
                                 [alt]="item.name" 
                                 class=" lazyload rounded" 
                                /> <span class="details">

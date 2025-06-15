@@ -11,6 +11,7 @@ import { SubcategoryService } from '../../Services/subcategory.service';
 import { ImageService } from '../../Services/image.service';
 import { LookupService } from '../../Services/lookup.service';
 import { LookupTypeModel } from '../../Interfaces/LookupTypeModel';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -107,21 +108,36 @@ constructor(private productService:ProductService,
     }
   }
   private saveProduct(): void {
-    if (this.isEdit) {
-      this.productService.updateProduct(this.products.id, this.products).subscribe({
-        next: () => this.router.navigate(['/product']),
-        error: (err) => console.error( err)
-      });
-    } else {
-      this.productService.addProduct(this.products).subscribe({
-        next: () => this.router.navigate(['/product']),
-        error: (err) => console.error(err)
-      });
-    }
+  if (this.isEdit) {
+    this.productService.updateProduct(this.products.id, this.products).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Updated Successfully 🎉',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: 'rgb(252, 148, 183)',
+        }).then(() => {
+          this.router.navigate(['/product']);
+        });
+      },
+      error: (err) => console.error(err)
+    });
+  } else {
+    this.productService.addProduct(this.products).subscribe({
+      next: () => {
+        Swal.fire({
+          title: 'Added Successfully 🎉',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          confirmButtonColor: 'rgb(252, 148, 183)',
+        }).then(() => {
+          this.router.navigate(['/product']);
+        });
+      },
+      error: (err) => console.error(err)
+    });
   }
-
-
-  
+}
 
 
 }

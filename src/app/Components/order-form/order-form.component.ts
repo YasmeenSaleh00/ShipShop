@@ -8,6 +8,7 @@ import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { OrderModel } from '../../Interfaces/OrderModel';
 import { CartService } from '../../Services/cart.service';
 import { CartModel } from '../../Interfaces/CartModel';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-form',
@@ -35,11 +36,25 @@ order:CreateOrder={
     const customerId=this.tokenService.getUserId();
     this.orderService.createOrder(this.order,customerId).subscribe({
       next:()=>{
-        alert('Order Created Successfully');
-        this.router.navigate(['/home']);
+        Swal.fire({
+        title: 'Order Created Successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)', 
+      }).then(() => {
+  this.router.navigate(['/home']);
+});
+   
+       
       },
       error:(err)=>{
-        console.log(err)
+      Swal.fire({
+        title: 'There is an error',
+        text: 'Try Again  ',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+   confirmButtonColor: 'rgb(252, 148, 183)', 
+      });
       }
       
     })

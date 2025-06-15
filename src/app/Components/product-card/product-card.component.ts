@@ -9,6 +9,7 @@ import { CartModel } from '../../Interfaces/CartModel';
 import { WishlistService } from '../../Services/wishlist.service';
 import { WishList } from '../../Interfaces/WishList';
 import { AuthService } from '../../Services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-card',
@@ -73,13 +74,22 @@ private authservice:AuthService){}
   }
     this.cartService.addToCart({ customerId, productId, quantity }).subscribe({
       next: (res) => {
-        console.log('Added ', res);
-        alert('Added To Cart Successfully 🎉  ');
+    Swal.fire({
+            title: 'Added To Cart Successfully 🎉',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: 'rgb(252, 148, 183)', 
+          })
         this.loadCart(); 
       },
       error: (err) => {
-       
-  alert('There was an error adding to cart ❌');      }
+        Swal.fire({
+                       title: 'There was an error adding to cart ❌',
+                  
+                       icon: 'error',
+                       confirmButtonText: 'Ok',
+                       confirmButtonColor: 'rgb(252, 148, 183)', 
+                     });   }
     });
   }
   loadWishList(){
@@ -104,12 +114,23 @@ private authservice:AuthService){}
     this.wishListService.addToWishList({customerId,productId}).subscribe({
       next: (res) => {
         console.log('Added ', res);
-        alert('Added To WishList Successfully 🎉  ');
+         Swal.fire({
+            title: 'Added To Wishlist Successfully 🎉',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            confirmButtonColor: 'rgb(252, 148, 183)', 
+          })
         this.loadWishList(); 
       },
       error: (err) => {
-       
-  alert('Already Exists in WishList ❌');
+         Swal.fire({
+                       title: 'Already Exists in WishList ❌',
+                  
+                       icon: 'error',
+                       confirmButtonText: 'Ok',
+                       confirmButtonColor: 'rgb(252, 148, 183)', 
+                     }); 
+ 
    }
     });
   }

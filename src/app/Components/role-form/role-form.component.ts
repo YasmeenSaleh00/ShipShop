@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RoleService } from '../../Services/role.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Role } from '../../Interfaces/Role';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-role-form',
@@ -36,13 +37,28 @@ export class RoleFormComponent implements OnInit {
     if(this.isEdit){
       this.roleService.updateRole(this.role.id,this.role)
       .subscribe(()=>{
-        this.router.navigate(['/role']);
+        Swal.fire({
+                      title: 'Updated Successfully 🎉',
+                      icon: 'success',
+                      confirmButtonText: 'Ok',
+                      confirmButtonColor: 'rgb(252, 148, 183)', 
+                    }).then(()=>{
+ this.router.navigate(['/role']);
+                    })
       })
     }
     else{
       this.roleService.addRole(this.role)
       .subscribe(()=>{
-        this.router.navigate(['/role']);
+        Swal.fire({
+                      title: 'Added Successfully 🎉',
+                      icon: 'success',
+                      confirmButtonText: 'Ok',
+                      confirmButtonColor: 'rgb(252, 148, 183)', 
+                    }).then(()=>{
+ this.router.navigate(['/role']);
+                    })
+       
       });
     }
   }

@@ -118,7 +118,7 @@
           style="cursor: pointer"
         >
           <img
-            [src]="item.imagePath"
+    [src]= "'https://localhost:7057/Images/' + item.imagePath"
             [alt]="item.name"
             class="img-fluid shadow-sm rounded-circle"
             style="width: 150px; height: 150px; object-fit: cover"

@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { WishList } from '../../Interfaces/WishList';
 import { WishlistService } from '../../Services/wishlist.service';
 import { AuthService } from '../../Services/auth.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -58,13 +59,23 @@ addToCart(productId: number,quantity:number){
   const customerId = this.tokenService.getUserId();
   this.cartService.addToCart({customerId,productId,quantity}).subscribe({
     next: (res) => {
-      console.log('Added ', res);
-      alert('Added To Cart Successfully 🎉  ');
+Swal.fire({
+                             title: 'Added To Cart Successfully 🎉 ',
+                             icon: 'success',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+
       this.loadCart(); 
     },
     error: (err) => {
-     
-  alert('There was an error adding to cart ❌');
+     Swal.fire({
+                             title: 'There was an error adding to cart ❌',
+                             icon: 'error',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+;
     }
   });
 }
@@ -88,12 +99,23 @@ addToWishList(productId: number){
   }
 this.wishListService.addToWishList({customerId,productId}).subscribe({
   next: (res) => {
-    console.log('Added ', res);
-    alert('Added To WishList Successfully 🎉  ');
+ Swal.fire({
+                             title: 'Added To WishList Successfully 🎉 ',
+                             icon: 'success',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+  
     this.loadWishList(); 
   },
   error: (err) => {
-  alert('Already Exists in WishList ❌');
+    Swal.fire({
+                             title: 'Already Exists in WishList ❌ ',
+                             icon: 'error',
+                             confirmButtonText: 'Ok',
+                             confirmButtonColor: 'rgb(252, 148, 183)', 
+                           })
+  
 
   }
 });

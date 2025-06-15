@@ -6,14 +6,14 @@ import { CustomerOrderComponent } from "../customer-order/customer-order.compone
 import { AccountDetailsComponent } from "../account-details/account-details.component";
 import { NgIf } from '@angular/common';
 import { AuthService } from '../../Services/auth.service';
-import { TestimonialCustomerComponent } from "../testimonial-customer/testimonial-customer.component";
+
 import { Customer } from '../../Interfaces/Customer';
 
 
 @Component({
   selector: 'app-myaccount',
   standalone: true,
-  imports: [RouterLink, CustomerOrderComponent, AccountDetailsComponent, NgIf, TestimonialCustomerComponent],
+  imports: [RouterLink, CustomerOrderComponent, AccountDetailsComponent, NgIf],
   templateUrl: './myaccount.component.html',
   styleUrl: './myaccount.component.css'
 })

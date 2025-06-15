@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Messages } from '../../Interfaces/Message';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -29,13 +30,24 @@ onSubmit(form:any){
      if (form.invalid) return;
     this.messageService.CreateMessage(this.message).subscribe({
   next: () => {
-   this.successMessage = "Your message has been sent successfully.";
-
-  
-  },
+     Swal.fire({
+               title: 'Send Successfully 🎉',
+               icon: 'success',
+               confirmButtonText: 'Ok',
+               confirmButtonColor: 'rgb(252, 148, 183)', 
+             }).then(() => {
+        form.reset();
+      });
+    },
   error: (err) => {
-    console.error(err);
-    alert("An error occurred. Please try again.");
+    Swal.fire({
+                          title: 'An error occurred. ',
+                     text:'Please try again.',
+                          icon: 'error',
+                          confirmButtonText: 'Ok',
+                          confirmButtonColor: 'rgb(252, 148, 183)', 
+                        }); 
+   
   }
 });
 

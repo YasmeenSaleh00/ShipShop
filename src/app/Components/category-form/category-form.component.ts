@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { ImageService } from '../../Services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-form',
@@ -74,12 +75,30 @@ export class CategoryFormComponent implements OnInit {
   private saveCategory() {
     if (this.isEdit) {
       this.categoryService.updateCategory(this.category.id, this.category).subscribe({
-        next: () => this.router.navigate(['/category']),
+        next: () => {
+          Swal.fire({
+                                   title: 'Updated Successfully 🎉',
+                                   icon: 'success',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                                 }).then(()=>{
+              this.router.navigate(['/category']);
+                                 })
+  },
         error: (err) => console.error( err)
       });
     } else {
       this.categoryService.addCategory(this.category).subscribe({
-        next: () => this.router.navigate(['/category']),
+        next: () => {
+          Swal.fire({
+                                   title: 'Added Successfully 🎉',
+                                   icon: 'success',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                                 }).then(()=>{
+              this.router.navigate(['/category']);
+                                 })
+  },
         error: (err) => console.error( err)
       });
     }

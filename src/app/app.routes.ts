@@ -39,7 +39,6 @@ import { ProductCardDeatilsComponent } from './Components/product-card-deatils/p
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { TestimonialTableComponent } from './Components/testimonial-table/testimonial-table.component';
 import { TestimonialFormComponent } from './Components/testimonial-form/testimonial-form.component';
-import { TestimonialCustomerComponent } from './Components/testimonial-customer/testimonial-customer.component';
 import { MessagesTableComponent } from './Components/messages-table/messages-table.component';
 
 export const routes: Routes = [
@@ -90,7 +89,7 @@ export const routes: Routes = [
 {path:'dashboard',component:DashboardComponent},
 {path:'testimonial-table',component:TestimonialTableComponent},
 {path:'testimonial-form',component:TestimonialFormComponent},
-{path:'testimonial',component:TestimonialCustomerComponent},
+
 {path:'message-table',component:MessagesTableComponent}
 
 ];

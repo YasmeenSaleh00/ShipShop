@@ -42,14 +42,24 @@
         </div>
         
 
-        <a routerLink="/wishlist" class="mx-2" [appRole]="'Customer'">
+
+        <a routerLink="/wishlist" class="mx-1" [appRole]="'Customer'">
           <i class="fas fa-heart span"></i>
         </a>
 
         
-        <a routerLink="/cart" class="mx-2" [appRole]="'Customer'">
+        <a routerLink="/cart" class="mx-1" [appRole]="'Customer'">
           <i class="fas fa-shopping-bag span"  ></i>
         </a>
+<div style="position: relative; display: inline-block;">
+  <a (click)="togglePopup()" style="cursor: pointer;"class="mx-1 ss">
+<i class="fa-solid fa-user-gear span"></i>
+  </a>
+   <div *ngIf="showPopup" class="pop">
+    <button routerLink="/login" class="btn-pink pe-3 ps-3 text-center w-100"> Login</button>
+    <p class="mt-2 fs-2">New User? <span style="cursor: pointer; text-decoration: underline;" routerLink="/singup">Create an Account</span> </p>
+  </div>
+</div>
           <div class="d-lg-none">
           <button class="btn btn-secondary  m-2" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
             <i class="fa-solid fa-bars span"></i>

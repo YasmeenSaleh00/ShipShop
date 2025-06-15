@@ -54,7 +54,6 @@
 
                     <li><a class="nav-link"  (click)="setTab('orders')">Orders</a></li>
                     <li><a class="nav-link"  (click)="setTab('account-details')">Account details</a></li>
-                    <li><a class="nav-link" (click)="setTab('testimonial')">testimonial</a></li>
 
                     <li><a class="nav-link" (click)="logOut()">logout</a></li>
                 </ul>
@@ -71,7 +70,6 @@
                         <app-customer-order *ngIf="activeTab === 'orders'"></app-customer-order>
                    
                         <app-account-details *ngIf="activeTab === 'account-details'"></app-account-details>
-                        <app-testimonial-customer  *ngIf="activeTab === 'testimonial'"></app-testimonial-customer>
 
                     </div>
                  

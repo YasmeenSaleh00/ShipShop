@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RoleDirective } from '../../Directive/role.directive';
 import { NgClass } from '@angular/common';
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,5 +14,10 @@ import { NgClass } from '@angular/common';
 export class FooterComponent {
 isInfoOpen = false;
 isCustomerOpen = false;
+constructor(private authService:AuthService,private router:Router){}
 
+logout(){
+  this.authService.logOut();
+  this.router.navigate(['/login']);
+}
 }

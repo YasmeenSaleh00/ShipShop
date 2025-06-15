@@ -17,6 +17,7 @@ import { SubcategoryService } from '../../Services/subcategory.service';
 import { Testimonial } from '../../Interfaces/Testimonial';
 import { TestimonialService } from '../../Services/testimonial.service';
 import { AuthService } from '../../Services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -66,10 +67,23 @@ constructor(private productService:ProductService,
     this.cartService.addToCart({customerId,productId,quantity}).subscribe({
       next:(res)=>{
         this.cart=res;
-        alert('Added To Cart Successfully 🎉')
+        
+         Swal.fire({
+        title: 'Added To Cart Successfully 🎉',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)', 
+      })
+      
       },
       error:(err)=>{
-  alert('There was an error adding to cart ❌');
+         Swal.fire({
+                title: 'There was an error adding to cart ❌',
+                text: 'Try Again  ',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+              });
+
       }
     })
   }
@@ -83,13 +97,28 @@ constructor(private productService:ProductService,
     this.wishListService.addToWishList({customerId,productId}).subscribe({
       next:(res)=>{
         this.cart=res;
-        alert('Added To WishList Successfully 🎉')
+              Swal.fire({
+        title: 'Added To WishList Successfully 🎉',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)', 
+      })
+      
+       
       },
       error:(err)=>{
-      alert('Already Exists in WishList ❌');
+         Swal.fire({
+                title: 'Already Exists in WishList ❌',
+           
+                icon: 'error',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: 'rgb(252, 148, 183)', 
+              });
+     
       }
     })
   }
 
  
 }
+

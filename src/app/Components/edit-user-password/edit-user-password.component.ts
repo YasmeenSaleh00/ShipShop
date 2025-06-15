@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { updateUserPassword } from '../../Interfaces/UpdateUserPassword';
 import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user-password',
@@ -41,8 +42,15 @@ user:updateUserPassword={
   
       this.userService.updateUserPassword(+id, this.user).subscribe(
         (response) => {
-          console.log('Password updated successfully');
-          this.router.navigate(['/user']);
+           Swal.fire({
+                                title: 'Password updated successfully 🎉',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                confirmButtonColor: 'rgb(252, 148, 183)', 
+                              }).then(()=>{
+           this.router.navigate(['/user']);
+                              })
+        
         },
         (error) => {
           console.error('Error updating password:', error);

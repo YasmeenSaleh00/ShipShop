@@ -7,6 +7,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { OrderService } from '../../Services/order.service';
 import { CreateOrder } from '../../Interfaces/CreateOrder';
 import { OrderModel } from '../../Interfaces/OrderModel';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-order',
@@ -69,13 +70,32 @@ export class EditOrderComponent {
     }
   }
   
-  
-  onSubmit(form: any): void {
-    if (form.invalid) {
-      return;
-    }
-    this.orderService.updateOrderStauts(this.order.orderNumber,this.order.orderStatusId).subscribe(()=>{
-      this.router.navigate(['/order-table'])
-    })
+ onSubmit(form: any): void {
+  if (form.invalid) {
+    return;
   }
+
+  this.orderService.updateOrderStauts(this.order.orderNumber, this.order.orderStatusId).subscribe({
+    next: () => {
+      Swal.fire({
+        title: 'Status Updated Successfully 🎉',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)',
+      }).then(() => {
+        this.router.navigate(['/order-table']);
+      });
+    },
+    error: (err) => {
+      Swal.fire({
+        title: 'An error occurred',
+        text: 'Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      console.error(err);
+    }
+  });
+}
+
 }

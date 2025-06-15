@@ -4,6 +4,7 @@ import { Customer } from '../../Interfaces/Customer';
 import { NgFor } from '@angular/common';
 import { RoleDirective } from '../../Directive/role.directive';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer-table',
@@ -22,15 +23,55 @@ export class CustomerTableComponent implements OnInit {
   }
 
   banCustomer(id: number) {
-    this.customerService.banCustomer(id).subscribe(() => {
-      alert('Banned Successfully ✅');
+    this.customerService.banCustomer(id).subscribe({
+      next: () => {
+      Swal.fire({
+        title: 'Banned Successfully ✅',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)',
+      }).then(() => {
+   
+        this.customerService.getCustomers().subscribe(data=>this.customer=data);
+      });
+    },
+    error: (err) => {
+      Swal.fire({
+        title: 'An error occurred',
+        text: 'Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      console.error(err);
+    }
     });
   }
   activeCustomer(id:number){
-    this.customerService.activeCustomer(id).subscribe(()=>{
-      alert('Activated Successfully ✅ ')
-    });
-  }
+    this.customerService.activeCustomer(id).subscribe({
+ next: () => {
+      Swal.fire({
+        title: 'Activated Successfully ✅',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+        confirmButtonColor: 'rgb(252, 148, 183)',
+      }).then(() => {
+   
+        this.customerService.getCustomers().subscribe(data=>this.customer=data);
+      });
+    },
+    error: (err) => {
+      Swal.fire({
+        title: 'An error occurred',
+        text: 'Please try again later.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      })
+      console.error(err);
+    }
+  });
+}
+ 
+
 sortByCreationDate(sortDirection:string){
 this.customerService.sortByCreationDate(sortDirection).subscribe(data=>this.customer=data);
 }

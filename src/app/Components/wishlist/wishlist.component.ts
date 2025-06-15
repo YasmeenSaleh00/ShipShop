@@ -6,6 +6,7 @@ import { WishlistService } from '../../Services/wishlist.service';
 import { WishList } from '../../Interfaces/WishList';
 import { TokenService } from '../../Services/token.service';
 import { CartService } from '../../Services/cart.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -42,7 +43,12 @@ if(wishId != null)
    next:()=>{
     if(this.wishList)
       this.wishList.wishListItems = this.wishList.wishListItems.filter(item => item.productId !== productId);
-    alert('Removed  Successfully')
+    Swal.fire({
+                   title: 'Removed Successfully ',
+                   icon: 'success',
+                   confirmButtonText: 'Ok',
+                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                 })
    },
    
    error:(err)=>{
@@ -57,13 +63,26 @@ onAddToCart(productId: number) {
 
   this.cartService.addToCart({ customerId, productId, quantity }).subscribe({
     next: (res) => {
-      console.log('Added ', res);
-      alert('Added To Cart Successfully 🎉  ');
+    Swal.fire({
+                   title: 'Added To Cart  Successfully 🎉',
+                   icon: 'success',
+                   confirmButtonText: 'Ok',
+                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                 }).then(()=>{
+         if(this.wishList)
+      this.wishList.wishListItems = this.wishList.wishListItems.filter(item => item.productId !== productId);
+                 });
+    
       
     },
     error: (err) => {
-     
-      alert('  There is an Problem  ❌ ');
+      Swal.fire({
+                   title: 'There is an Problem  ❌ ',
+                   icon: 'error',
+                   confirmButtonText: 'Ok',
+                   confirmButtonColor: 'rgb(252, 148, 183)', 
+                 })
+
     }
   });
 }

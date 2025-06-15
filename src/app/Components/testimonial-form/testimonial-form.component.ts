@@ -3,8 +3,9 @@ import { TestimonialService } from '../../Services/testimonial.service';
 import { Testimonial } from '../../Interfaces/Testimonial';
 import { TokenService } from '../../Services/token.service';
 import { Router } from '@angular/router';
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-testimonial-form',
@@ -28,7 +29,16 @@ export class TestimonialFormComponent {
 onSubmit(form:any){
   this.testimonial.customerId= this.tokenService.getUserId();
   this.testimonialService.createTestimonial(this.testimonial).subscribe({
-    next: () => this.router.navigate(['/account'])
+    next: () =>{
+      Swal.fire({
+              title: 'Send Successfully 🎉',
+              icon: 'success',
+              confirmButtonText: 'Ok',
+              confirmButtonColor: 'rgb(252, 148, 183)', 
+            }).then(()=>{
+              form.reset()
+            })
+    }
   })
 }
 }

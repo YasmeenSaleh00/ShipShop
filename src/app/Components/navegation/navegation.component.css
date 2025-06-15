@@ -84,3 +84,49 @@
   background-color: #f4a7c1;
   color: #fff;
 }
+.fs-2{
+  font-size: 12px !important;
+  color: #434242;
+  padding: 3px;
+}
+.pop{
+    position: absolute; 
+          top: 150%; 
+          left: 50%; 
+          transform: translateX(-50%);
+          background: white; 
+          border: 1px solid #ccc; 
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+          padding: 15px; 
+          border-radius: 5px;
+          z-index: 1000;
+          white-space: nowrap;
+}
+.pop::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #ccc; /* لون حد الصندوق */
+  
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+}
+.pop::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid white; 
+  
+  left: 50%;
+  bottom: calc(100% - 1px);
+  transform: translateX(-50%);
+}

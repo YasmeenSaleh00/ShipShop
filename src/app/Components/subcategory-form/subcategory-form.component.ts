@@ -7,6 +7,7 @@ import { SubCategory } from '../../Interfaces/SubCategory';
 import { CategoryService } from '../../Services/category.service';
 import { Category } from '../../Interfaces/Category';
 import { ImageService } from '../../Services/image.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-subcategory-form',
@@ -79,12 +80,30 @@ mainCategory:Category[]=[]
   private saveCategory() {
     if (this.isEdit) {
       this.subCategoryService.updateSubCategory(this.category.id, this.category).subscribe({
-        next: () => this.router.navigate(['/subcategory']),
+       next: () => {
+                Swal.fire({
+                                         title: 'Updated Successfully 🎉',
+                                         icon: 'success',
+                                         confirmButtonText: 'Ok',
+                                         confirmButtonColor: 'rgb(252, 148, 183)', 
+                                       }).then(()=>{
+                    this.router.navigate(['/subcategory']);
+                                       })
+        },
         error: (err) => console.error('خطأ أثناء تعديل الكاتيجوري', err)
       });
     } else {
       this.subCategoryService.addSubCategory(this.category).subscribe({
-        next: () => this.router.navigate(['/subcategory']),
+   next: () => {
+                Swal.fire({
+                                         title: 'Added Successfully 🎉',
+                                         icon: 'success',
+                                         confirmButtonText: 'Ok',
+                                         confirmButtonColor: 'rgb(252, 148, 183)', 
+                                       }).then(()=>{
+                    this.router.navigate(['/subcategory']);
+                                       })
+        },
         error: (err) => console.error('خطأ أثناء إضافة الكاتيجوري', err)
       });
     }

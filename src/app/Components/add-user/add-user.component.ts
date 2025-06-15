@@ -6,6 +6,7 @@ import { Role } from '../../Interfaces/Role';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddUser } from '../../Interfaces/AddUser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-user',
@@ -46,7 +47,14 @@ export class AddUserComponent implements OnInit {
     this.passwordError = false; 
     this.userService.addUser(this.user)
     .subscribe(()=>{
-      this.router.navigate(['/user']);
+    Swal.fire({
+                         title: 'Created Successfully 🎉',
+                         icon: 'success',
+                         confirmButtonText: 'Ok',
+                         confirmButtonColor: 'rgb(252, 148, 183)', 
+                       }).then(()=>{
+    this.router.navigate(['/user']);
+                       })
     })
 
   }
