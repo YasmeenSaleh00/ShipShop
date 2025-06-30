@@ -46,31 +46,36 @@ export class CartComponent implements OnInit {
  
   }
   removeFromCart(cartId: number , productId: number) {
-    if (cartId != null) {
-      this.cartService.removeFromCart(cartId, productId).subscribe({
-        next: () => {
-          if (this.cart) {
+     Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.cartService.removeFromCart(cartId,productId).subscribe(() => {
+                 
+                       if (this.cart) {
             this.cart.items = this.cart.items.filter(item => item.productId !== productId);
           }
-          Swal.fire({
-                             title: 'Removed From Cart Successfully',
-                             icon: 'success',
-                             confirmButtonText: 'Ok',
-                             confirmButtonColor: 'rgb(252, 148, 183)', 
-                           })
-         
-        },
-        error: (err) => {
-             Swal.fire({
-                             title: 'Error removing item from cart',
-                             icon: 'error',
-                             confirmButtonText: 'Ok',
-                             confirmButtonColor: 'rgb(252, 148, 183)', 
-                           })
-      
-        }
-      });
-    }
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Deleted successfully.",
+                        icon: "success"
+                      });
+                    }, error => {
+                      Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong.",
+                        icon: "error"
+                      });
+                    });
+                  }
+                });
+   
   }
   loadCart() {
     const customerId = this.tokenService.getUserId();

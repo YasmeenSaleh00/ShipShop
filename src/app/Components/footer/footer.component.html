@@ -27,8 +27,8 @@
             <li><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
             <li><a routerLink="/privacy">Privacy policy</a></li>
             <li><a routerLink="/terms">Terms &amp; condition</a></li>
-            <li><a routerLink="/account" [appRole]="'Customer'">My Account</a></li>
-            <li><a routerLink="/testimonial-form" [appRole]="'Customer'">Your FeedBack?</a></li>
+            <li><a routerLink="/account" [appRole]="['Customer']">My Account</a></li>
+            <li><a routerLink="/testimonial-form"[appRole]="['Customer']">Your FeedBack?</a></li>
           </ul>
         </div>
 

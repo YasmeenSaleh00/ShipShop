@@ -11,7 +11,7 @@
 <div class="card shadow-sm mt-4">
     <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
       <strong class="fs-5">📂 Sub Category List</strong>
-      <button class="btn btn-success btn-sm" routerLink="/subcategory/add" [appRole]="'Add'">➕ Add SubCategory</button>
+      <button class="btn btn-success btn-sm" routerLink="/subcategory/add" [appRole]="['Add','Admin']">➕ Add SubCategory</button>
     </div>
   
     <div class="card-body">
@@ -37,8 +37,8 @@
                 <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
               </th>
               <th>Is Active</th>
-              <th [appRole]="'Edit'">Edit</th>
-              <th [appRole]="'Delete'">Delete</th>
+              <th [appRole]="['Edit','Admin']">Edit</th>
+              <th [appRole]="['Delete', 'Admin']">Delete</th>
             </tr>
           </thead>
   
@@ -61,7 +61,7 @@
            
               <td>{{category.createdOn}}</td>
               <td><span>{{category.isActive}}</span></td>
-              <td [appRole]="'Edit'">
+              <td [appRole]="['Edit','Admin']">
                 <div class="d-flex justify-content-center gap-2">
                   <button class="btn btn-sm btn-outline-primary"  [routerLink]="['/subcategory/edit', category.id]">
                     ✏️ Edit
@@ -69,7 +69,7 @@
                
                 </div>
               </td>
-              <td [appRole]="'Delete'">   <button class="btn btn-sm btn-outline-danger" (click)="deleteSubCategory(category.id)">
+              <td [appRole]="['Delete', 'Admin']">   <button class="btn btn-sm btn-outline-danger" (click)="deleteSubCategory(category.id)">
                 🗑️ Delete
               </button></td>
             </tr>

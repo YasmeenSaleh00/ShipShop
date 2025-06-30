@@ -9,12 +9,22 @@ export class RoleDirective implements OnInit {
 
   constructor(private elementRef:ElementRef,private tokenService:TokenService) { }
  
-  @Input() appRole:string='';
+  @Input() appRole: string[] = [];
 
-  ngOnInit(): void {
-    const userRole = this.tokenService.getRole();
-    if (!userRole || userRole != this.appRole ) {
-      this.elementRef.nativeElement.remove();
-    }
+ngOnInit(): void {
+  const userRole = this.tokenService.getRole();
+
+  if (!userRole || !this.appRole || this.appRole.length === 0) {
+    this.elementRef.nativeElement.remove();
+    return;
+  }
+
+  const isAuthorized = this.appRole.includes(userRole);
+
+  if (!isAuthorized) {
+    this.elementRef.nativeElement.remove();
   }
 }
+
+  }
+

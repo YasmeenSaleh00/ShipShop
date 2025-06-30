@@ -11,7 +11,7 @@
 <div class="card shadow-sm mt-4">
   <div class="card-header d-flex justify-content-between align-items-center bg-dark text-white">
     <strong class="fs-5">👤 Users List</strong>
-    <button class="btn btn-success btn-sm" routerLink="/user/add" [appRole]="'Add'"  >➕ Add User</button>
+    <button class="btn btn-success btn-sm" routerLink="/user/add" [appRole]="['Add','Admin']"  >➕ Add User</button>
   </div>
 
       <div class="card-body">
@@ -40,8 +40,8 @@
                 <i class="fas fa-sort-down text-danger" (click)="sortByCreationDate('desc')"></i>
                 </th>
                 <th>Is Active</th>
-                <th [appRole]="'Edit'">Edit</th>
-                <th  [appRole]="'Delete'">Delete</th>
+                <th [appRole]="['Edit','Admin']">Edit</th>
+                <th   [appRole]="['Delete', 'Admin']">Delete</th>
               </tr>
             </thead>
   
@@ -54,7 +54,7 @@
                 <td >{{user.roleName}}</td>
                 <td>{{ user.createdOn }}</td>
                 <td>{{ user.isActive }}</td>
-                <td [appRole]="'Edit'">
+                <td [appRole]="['Edit','Admin']">
                   <div class="d-flex justify-content-center gap-2">
                     <button class="btn btn-sm btn-outline-primary" [routerLink]="['/user/edit', user.id]"  >
                       ✏️ Edit Password
@@ -62,7 +62,7 @@
                    
                   </div>
                 </td>
-                <td [appRole]="'Delete'"> <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)" >
+                <td  [appRole]="['Delete', 'Admin']"> <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id)" >
                   🗑️ Delete
                 </button></td>
               </tr>

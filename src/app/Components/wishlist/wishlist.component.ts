@@ -38,24 +38,37 @@ this.wishList=data;
 }
 
 removeFromWishList(wishId:number,productId:number){
-if(wishId != null)
-  this.wishlistService.removeFromeWishList(wishId,productId).subscribe({
-   next:()=>{
-    if(this.wishList)
-      this.wishList.wishListItems = this.wishList.wishListItems.filter(item => item.productId !== productId);
-    Swal.fire({
-                   title: 'Removed Successfully ',
-                   icon: 'success',
-                   confirmButtonText: 'Ok',
-                   confirmButtonColor: 'rgb(252, 148, 183)', 
-                 })
-   },
-   
-   error:(err)=>{
-         console.log(err);
-   }
-   
-  })
+ Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't be able to revert this!",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.wishlistService.removeFromeWishList(wishId,productId).subscribe(() => {
+                 
+                       if (this.wishList) {
+            this.wishList.wishListItems = this.wishList.wishListItems.filter(item => item.productId !== productId);
+          }
+                      Swal.fire({
+                        title: "Deleted!",
+                        text: "Deleted successfully.",
+                        icon: "success"
+                      });
+                    }, error => {
+                      Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong.",
+                        icon: "error"
+                      });
+                    });
+                  }
+                });
+
+  
 }
 onAddToCart(productId: number) {
   const quantity = 1;

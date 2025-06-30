@@ -44,7 +44,7 @@
               <th>Total Price</th>
               <th>Address</th>
               <th>Order Details</th>
-              <th [appRole]="'Edit'" >Edit</th>
+              <th [appRole]="['Edit','Admin']" >Edit</th>
             </tr>
           </thead>
   
@@ -60,7 +60,7 @@
               <td>{{item.shippingAddress}}</td>
               <td><a  [routerLink]="['/order-details', item.orderNumber]">View</a></td>
 
-              <td  [appRole]="'Edit'" >
+              <td [appRole]="['Edit','Admin']" >
                 <div class="d-flex justify-content-center gap-2">
                   <button class="btn btn-sm btn-outline-primary"  [routerLink]="['/edit-order', item.orderNumber, 3]">
                     <i class="fas fa-edit me-2"></i>Edit

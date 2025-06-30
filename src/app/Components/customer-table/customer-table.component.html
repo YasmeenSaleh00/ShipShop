@@ -37,7 +37,7 @@
               </th>
               <th>Customer status</th>
               <th>Is Active</th>
-              <th  [appRole]="'Edit'">Actions</th>
+              <th  [appRole]="['Edit','Admin']">Actions</th>
             </tr>
           </thead>
   
@@ -50,7 +50,7 @@
               <td>{{customer.createOn}}</td>
               <td>{{customer.customerStatus}}</td>
               <td><span>{{customer.isActive}}</span></td>
-              <td  [appRole]="'Edit'">
+              <td   [appRole]="['Edit','Admin']">
                 <div class="d-flex justify-content-center gap-2">
                   <button class="btn btn-sm btn-outline-primary" (click)="activeCustomer(customer.id)">
                     <i class="fas fa-check-circle me-2"></i>Activate
