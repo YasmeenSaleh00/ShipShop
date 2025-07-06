@@ -41,26 +41,25 @@
             class="form-control"
             [(ngModel)]="searchKeyword"
             (keyup.enter)="onSearch()"
+            placeholder="🔍 Search..."
           />
-          <button
-            class="btn btn-pink rounded"
-            type="button"
-            (click)="onSearch()"
-          >
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
         </div>
 
         <a
           routerLink="/wishlist"
           class="mx-1"
-         [appRole]="['Customer']"
+          [appRole]="['Customer']"
           title="wishlist"
         >
           <i class="fas fa-heart span"></i>
         </a>
 
-        <a routerLink="/cart" class="mx-1" [appRole]="['Customer']" title="Cart">
+        <a
+          routerLink="/cart"
+          class="mx-1"
+          [appRole]="['Customer']"
+          title="Cart"
+        >
           <i class="fas fa-shopping-bag span"></i>
         </a>
         <div style="position: relative; display: inline-block">

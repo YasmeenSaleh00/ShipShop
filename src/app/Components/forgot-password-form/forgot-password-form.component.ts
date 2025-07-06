@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CustomerService } from '../../Services/customer.service';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -28,22 +29,41 @@ isEmailValid: boolean = false;
       
         this.isEmailValid = false;
         this.isPasswordFormVisible = false;
-        alert('Email not found. Please check your email address.');
-      }
-    );
+         Swal.fire({
+                 title: 'Email not found. Please check your email address.',
+                 icon: 'error',
+                 confirmButtonText: 'Ok',
+                 confirmButtonColor: 'rgb(252, 148, 183)',
+               })
+        }
+    )
   }
+       
+     
 
 
   updatePassword() {
     if (this.newPassword) {
       this.customerService.updatePassword(this.email, this.newPassword).subscribe(
         (response) => {
-          alert('Password updated successfully');
-            this.router.navigate(['/login']);
+           Swal.fire({
+                  title: 'Password Updated Successfully 🎉',
+                  icon: 'success',
+                  confirmButtonText: 'Ok',
+                  confirmButtonColor: 'rgb(252, 148, 183)',
+                }).then(() => {
+                  this.router.navigate(['/login']);
+                });
+         
           
         },
-        (error) => {
-          alert('Error updating password');
+            (error) => {
+          Swal.fire({
+                 title: 'Error updating password',
+                 icon: 'error',
+                 confirmButtonText: 'Ok',
+                 confirmButtonColor: 'rgb(252, 148, 183)',
+               })
         }
       );
     }
